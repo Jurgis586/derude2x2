@@ -1,0 +1,78 @@
+https://sketchfab.com/3d-models/medieval-house-2-7274480fe7cc46c4b053629452411f39
+https://sketchfab.com/3d-models/mayan-temple-or-stage-ef4bf91b290b47efa2e6944abc5d46d5
+https://sketchfab.com/3d-models/medieval-ruin-tample-2bb4d9e8fe9a4bb5bc54b1f200b7a9cc
+https://sketchfab.com/3d-models/castle-walls-e9aa5d571bc64e1c90cd511cca7f98f9
+https://sketchfab.com/3d-models/castle-villalonso-zamora-spain-5dbe4dc71d8841339e5e602cdcc3f1fc
+https://sketchfab.com/3d-models/axe-low-poly-05703932eb2c45c0918d4f91c875d064
+https://sketchfab.com/3d-models/bucket-a63bd9fb2a4649ffaed97a8798647909
+https://sketchfab.com/3d-models/tent-af33dfc172954f86a09fc30e7af6ffd7
+https://sketchfab.com/3d-models/campfire-1ef99d8d5bda4995871bcf39ef4bcb1d
+https://sketchfab.com/3d-models/barrel-805be8c20e1f481893bd796d38ab8dc7
+https://sketchfab.com/3d-models/ladder-adf229c426194740ab0ec9cdb00262b4
+https://sketchfab.com/3d-models/keep-out-signpost-7598a84aebcf47a684dd83476550d5cd
+https://sketchfab.com/3d-models/medieval-ruin-building-b42046ae0fab4471b6b7a758b8e65da6
+https://sketchfab.com/3d-models/anubis-statue-b68da033e5da46408a1b58ccdc973435
+https://sketchfab.com/3d-models/san-vicente-del-valle-mix-7c180782e9554abcbd63d9c098df7bac
+https://sketchfab.com/3d-models/wolfgang-7b24cc3d0f22446a990e3c66ed5014a1
+
+Teleisa:
+
+textures.com:
+"TexturesCom_SoilSand0179_1_seamless_S.jpg" 		from https://www.textures.com/download/soilsand0179/48700?q=soilsand0179 
+"TexturesCom_Pavement_StoneGreen_1K_albedo.tif" 	from https://www.textures.com/download/pbr0182/133221 
+"TexturesCom_Rock_CliffDesert3_1K_albedo.tif" 		from https://www.textures.com/download/pbr0223/133279 
+"TexturesCom_MixedPavement2_3x3_1K_albedo.tif" 		from https://www.textures.com/download/3dscans0560/136854 
+"TexturesCom_FloorsRegular0235_1_seamless_S.jpg" 	from https://www.textures.com/download/floorsregular0235/26921 
+"TexturesCom_Cobblestone13_4x4_1K_albedo.tif" 		from https://www.textures.com/download/3dscans0574/136953 
+"TexturesCom_BrickOldMixedSize0012_1_seamless_S.jpg" 	from https://www.textures.com/download/brickoldmixedsize0012/45084 
+"TexturesCom_BrickMedievalBlocks0333_5_seamless_S.png" 	from https://www.textures.com/download/brickmedievalblocks0333/130751 
+"TexturesCom_BrickMedievalBlocks0330_11_seamless_S.jpg" from https://www.textures.com/download/brickmedievalblocks0330/116381 
+"TexturesCom_BrickMedievalBlocks0312_2_seamless_S.jpg" 	from https://www.textures.com/download/brickmedievalblocks0312/97394 
+"TexturesCom_BrickLargeBare0196_1_seamless_S.jpg" 	from https://www.textures.com/download/bricklargebare0196/53564 
+
+"desert environment" from http://devassets.com/assets/desert-environment/  by Sam Troth
+https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483 script referenced in "MovementRB.cs" script
+http://wiki.unity3d.com/index.php/RigidbodyFPSWalker script referenced in "MovementRB.cs" script
+https://git.cs.nmt.edu/nhertz/game-jam-f2k16/blob/master/Assets/MouseLook.cs script modified
+
+"TOZ Triplanar Shaders" from https://assetstore.unity.com/packages/vfx/shaders/toz-triplanar-shaders-32519 by "Aubergine"
+"Yughues Free Concrete Materials" from https://assetstore.unity.com/packages/2d/textures-materials/concrete/yughues-free-concrete-materials-12951 by "Nobiax / Yughues"
+"Desert Sandbox LITE" from https://assetstore.unity.com/packages/3d/environments/fantasy/desert-sandbox-lite-25935 by "Aquarius Max"
+"POLYDesert" from https://assetstore.unity.com/packages/3d/environments/landscapes/polydesert-107196 by "Runemark Studio"
+"LowPoly Environment Pack" from https://assetstore.unity.com/packages/3d/environments/landscapes/lowpoly-environment-pack-99479 by "Korveen"
+"Sandstone Wall Construction Kit" from https://assetstore.unity.com/packages/3d/props/exterior/sandstone-wall-construction-kit-19235 by "Unity Technologies"
+"Low poly styled rocks" from https://assetstore.unity.com/packages/3d/props/exterior/low-poly-styled-rocks-43486 by "Daniel Robnik"
+"VolumetricLights" from "https://github.com/SlightlyMad/VolumetricLights/" by SlightlyMad
+
+"Long note One", "Ossuary 6 - Air", "Ready Aim Fire"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+171207__mrauralization__wood-burning-stove.wav from https://freesound.org/people/MrAuralization/sounds/171207/ by MrAuralization
+Cannon+3.mp3 from https://www.freesoundeffects.com/free-track/cannon-3-466487/ by "Partners In Rhyme"
+Explosion+3.wav from https://www.freesoundeffects.com/free-track/explosion-3-466448/ by "Partners In Rhyme"
+audio_hero_ExplosionSmall_DIGIJ02_24_351.mp3 from https://www.zapsplat.com/music/short-explosion/ by "Audio Hero"
+audio_hero_ExplosionLargeShar_PE097801_350.mp3 from https://www.zapsplat.com/music/explosion-large-sharp-crack-with-falling-debris/ by "Audio Hero"
+154934__klawykogut__empty-gun-shot.wav from https://freesound.org/people/KlawyKogut/sounds/154934/ by KlawyKogut
+163456__lemudcrab__pistol-shot.wav from https://freesound.org/people/LeMudCrab/sounds/163456/ by LeMudCrab15:42 10/03/2019
+TexturesCom_Brick_Rustic_1K_albedo.tif from https://www.textures.com/download/pbr0073/133108
+TexturesCom_Brick_Medieval_1K_albedo.tif from https://www.textures.com/download/pbr0071/133106
+TexturesCom_CastleGate_1K_albedo.tif from https://www.textures.com/download/pbr0267/133941?q=gate
+NavMeshComponents from https://github.com/Unity-Technologies/NavMeshComponents by Unity-Technologies
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+ from  by 
+
+
+Stadium Applause - http://soundbible.com/444-Stadium-Applause.html
+Wind - http://soundbible.com/1810-Wind.html

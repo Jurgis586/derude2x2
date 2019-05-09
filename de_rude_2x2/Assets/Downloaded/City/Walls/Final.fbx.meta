@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 3a97c42cb40e3a74b8ae053a2e876cda
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Camera
+    100002: Corner
+    100004: Corner.001
+    100006: //RootNode
+    100008: Gate
+    100010: Gate Border
+    100012: Gate Border.001
+    100014: Hallway
+    100016: Plane
+    100018: Square Tower - Body
+    100020: Square Tower - Body.001
+    100022: Square Tower - Body.002
+    100024: Square Tower - Body.003
+    100026: Square Tower - Body.004
+    100028: Square Tower - Body.005
+    100030: Square Tower - Floor
+    100032: Square Tower - Floor.001
+    100034: Square Tower - Floor.002
+    100036: Square Tower - Floor.003
+    100038: Square Tower - Floor.004
+    100040: Square Tower - Floor.005
+    100042: Square Tower - Step
+    100044: Square Tower - Step.001
+    100046: Square Tower - Step.002
+    100048: Square Tower - Step.003
+    100050: Square Tower - Step.004
+    100052: Square Tower - Step.005
+    100054: Square Tower - Top Details
+    100056: Square Tower - Top Details.001
+    100058: Square Tower - Top Details.002
+    100060: Square Tower - Top Details.003
+    100062: Square Tower - Top Details.004
+    100064: Square Tower - Top Details.005
+    100066: Square Tower - Windows Block
+    100068: Square Tower - Windows Block.001
+    100070: Square Tower - Windows Block.002
+    100072: Square Tower - Windows Block.003
+    100074: Square Tower - Windows Block.004
+    100076: Square Tower - Windows Block.005
+    100078: Wall
+    100080: Wall.001
+    100082: Wall.002
+    100084: Wall.003
+    100086: Wall.005
+    100088: Wall.006
+    400000: Camera
+    400002: Corner
+    400004: Corner.001
+    400006: //RootNode
+    400008: Gate
+    400010: Gate Border
+    400012: Gate Border.001
+    400014: Hallway
+    400016: Plane
+    400018: Square Tower - Body
+    400020: Square Tower - Body.001
+    400022: Square Tower - Body.002
+    400024: Square Tower - Body.003
+    400026: Square Tower - Body.004
+    400028: Square Tower - Body.005
+    400030: Square Tower - Floor
+    400032: Square Tower - Floor.001
+    400034: Square Tower - Floor.002
+    400036: Square Tower - Floor.003
+    400038: Square Tower - Floor.004
+    400040: Square Tower - Floor.005
+    400042: Square Tower - Step
+    400044: Square Tower - Step.001
+    400046: Square Tower - Step.002
+    400048: Square Tower - Step.003
+    400050: Square Tower - Step.004
+    400052: Square Tower - Step.005
+    400054: Square Tower - Top Details
+    400056: Square Tower - Top Details.001
+    400058: Square Tower - Top Details.002
+    400060: Square Tower - Top Details.003
+    400062: Square Tower - Top Details.004
+    400064: Square Tower - Top Details.005
+    400066: Square Tower - Windows Block
+    400068: Square Tower - Windows Block.001
+    400070: Square Tower - Windows Block.002
+    400072: Square Tower - Windows Block.003
+    400074: Square Tower - Windows Block.004
+    400076: Square Tower - Windows Block.005
+    400078: Wall
+    400080: Wall.001
+    400082: Wall.002
+    400084: Wall.003
+    400086: Wall.005
+    400088: Wall.006
+    2000000: Camera
+    2100000: Gate Planks
+    2100002: Gate Wall
+    2100004: Material.001
+    2100006: Material
+    2100008: Walls
+    2100010: Planks
+    2100012: No Name
+    2100014: Base Bricks
+    2100016: Window
+    2100018: Top Planks
+    2100020: Base Detail
+    2100022: Top Detail
+    2100024: Top Bricks.001
+    2300000: Corner
+    2300002: Corner.001
+    2300004: Gate
+    2300006: Gate Border
+    2300008: Gate Border.001
+    2300010: Hallway
+    2300012: Plane
+    2300014: Square Tower - Body
+    2300016: Square Tower - Body.001
+    2300018: Square Tower - Body.002
+    2300020: Square Tower - Body.003
+    2300022: Square Tower - Body.004
+    2300024: Square Tower - Body.005
+    2300026: Square Tower - Floor
+    2300028: Square Tower - Floor.001
+    2300030: Square Tower - Floor.002
+    2300032: Square Tower - Floor.003
+    2300034: Square Tower - Floor.004
+    2300036: Square Tower - Floor.005
+    2300038: Square Tower - Step
+    2300040: Square Tower - Step.001
+    2300042: Square Tower - Step.002
+    2300044: Square Tower - Step.003
+    2300046: Square Tower - Step.004
+    2300048: Square Tower - Step.005
+    2300050: Square Tower - Top Details
+    2300052: Square Tower - Top Details.001
+    2300054: Square Tower - Top Details.002
+    2300056: Square Tower - Top Details.003
+    2300058: Square Tower - Top Details.004
+    2300060: Square Tower - Top Details.005
+    2300062: Square Tower - Windows Block
+    2300064: Square Tower - Windows Block.001
+    2300066: Square Tower - Windows Block.002
+    2300068: Square Tower - Windows Block.003
+    2300070: Square Tower - Windows Block.004
+    2300072: Square Tower - Windows Block.005
+    2300074: Wall
+    2300076: Wall.001
+    2300078: Wall.002
+    2300080: Wall.003
+    2300082: Wall.005
+    2300084: Wall.006
+    3300000: Corner
+    3300002: Corner.001
+    3300004: Gate
+    3300006: Gate Border
+    3300008: Gate Border.001
+    3300010: Hallway
+    3300012: Plane
+    3300014: Square Tower - Body
+    3300016: Square Tower - Body.001
+    3300018: Square Tower - Body.002
+    3300020: Square Tower - Body.003
+    3300022: Square Tower - Body.004
+    3300024: Square Tower - Body.005
+    3300026: Square Tower - Floor
+    3300028: Square Tower - Floor.001
+    3300030: Square Tower - Floor.002
+    3300032: Square Tower - Floor.003
+    3300034: Square Tower - Floor.004
+    3300036: Square Tower - Floor.005
+    3300038: Square Tower - Step
+    3300040: Square Tower - Step.001
+    3300042: Square Tower - Step.002
+    3300044: Square Tower - Step.003
+    3300046: Square Tower - Step.004
+    3300048: Square Tower - Step.005
+    3300050: Square Tower - Top Details
+    3300052: Square Tower - Top Details.001
+    3300054: Square Tower - Top Details.002
+    3300056: Square Tower - Top Details.003
+    3300058: Square Tower - Top Details.004
+    3300060: Square Tower - Top Details.005
+    3300062: Square Tower - Windows Block
+    3300064: Square Tower - Windows Block.001
+    3300066: Square Tower - Windows Block.002
+    3300068: Square Tower - Windows Block.003
+    3300070: Square Tower - Windows Block.004
+    3300072: Square Tower - Windows Block.005
+    3300074: Wall
+    3300076: Wall.001
+    3300078: Wall.002
+    3300080: Wall.003
+    3300082: Wall.005
+    3300084: Wall.006
+    4300000: Wall
+    4300002: Hallway
+    4300004: Gate Border
+    4300006: Gate
+    4300008: Gate Border.001
+    4300010: Corner
+    4300012: Wall.001
+    4300014: Wall.002
+    4300016: Wall.003
+    4300018: Wall.005
+    4300020: Wall.006
+    4300022: Corner.001
+    4300024: Plane
+    4300026: Square Tower - Body
+    4300028: Square Tower - Floor
+    4300030: Square Tower - Step
+    4300032: Square Tower - Top Details
+    4300034: Square Tower - Windows Block
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

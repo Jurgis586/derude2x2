@@ -1,0 +1,360 @@
+fileFormatVersion: 2
+guid: bd6c4df3e91433a479505c54af577471
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box001 1
+    100004: Box002
+    100006: Box002 1
+    100008: Box003
+    100010: Box004
+    100012: Box005
+    100014: Box006
+    100016: Box007
+    100018: //RootNode
+    100020: Cylinder001
+    100022: Cylinder002
+    100024: Cylinder003
+    100026: Cylinder004
+    100028: Cylinder005
+    100030: Cylinder007
+    100032: Line001
+    100034: Line002
+    100036: Line003
+    100038: Line004
+    100040: Line005
+    100042: Line006
+    100044: Line007
+    100046: Line008
+    100048: Line010
+    100050: Line012
+    100052: Line013
+    100054: Line014
+    100056: Line015
+    100058: Line019
+    100060: Line020
+    100062: Line021
+    100064: Line022
+    100066: Line023
+    100068: Line024
+    100070: Line025
+    100072: Line026
+    100074: Line027
+    100076: Object001
+    100078: Plane001
+    100080: Sphere001
+    100082: Sphere002
+    100084: Sphere003
+    100086: Sphere004
+    100088: Sphere005
+    100090: Sphere006
+    100092: Sphere007
+    100094: Sphere008
+    100096: Sphere009
+    100098: Sphere010
+    100100: Sphere011
+    100102: Sphere012
+    400000: Box001
+    400002: Box001 1
+    400004: Box002
+    400006: Box002 1
+    400008: Box003
+    400010: Box004
+    400012: Box005
+    400014: Box006
+    400016: Box007
+    400018: //RootNode
+    400020: Cylinder001
+    400022: Cylinder002
+    400024: Cylinder003
+    400026: Cylinder004
+    400028: Cylinder005
+    400030: Cylinder007
+    400032: Line001
+    400034: Line002
+    400036: Line003
+    400038: Line004
+    400040: Line005
+    400042: Line006
+    400044: Line007
+    400046: Line008
+    400048: Line010
+    400050: Line012
+    400052: Line013
+    400054: Line014
+    400056: Line015
+    400058: Line019
+    400060: Line020
+    400062: Line021
+    400064: Line022
+    400066: Line023
+    400068: Line024
+    400070: Line025
+    400072: Line026
+    400074: Line027
+    400076: Object001
+    400078: Plane001
+    400080: Sphere001
+    400082: Sphere002
+    400084: Sphere003
+    400086: Sphere004
+    400088: Sphere005
+    400090: Sphere006
+    400092: Sphere007
+    400094: Sphere008
+    400096: Sphere009
+    400098: Sphere010
+    400100: Sphere011
+    400102: Sphere012
+    2100000: 16 - Default
+    2100002: 13 - Default
+    2100004: rop
+    2100006: 04 - Default
+    2100008: 'Material #26'
+    2100010: 02 - Default
+    2100012: 01 - Default
+    2100014: 07 - Default
+    2100016: 08 - Default
+    2100018: 10 - Default
+    2100020: 19 - Default
+    2100022: 20 - Defaultdfdf
+    2300000: Box001
+    2300002: Box001 1
+    2300004: Box002
+    2300006: Box002 1
+    2300008: Box003
+    2300010: Box004
+    2300012: Box005
+    2300014: Box006
+    2300016: Box007
+    2300018: Cylinder001
+    2300020: Cylinder002
+    2300022: Cylinder003
+    2300024: Cylinder004
+    2300026: Cylinder005
+    2300028: Cylinder007
+    2300030: Line001
+    2300032: Line002
+    2300034: Line003
+    2300036: Line004
+    2300038: Line005
+    2300040: Line006
+    2300042: Line007
+    2300044: Line008
+    2300046: Line010
+    2300048: Line012
+    2300050: Line013
+    2300052: Line014
+    2300054: Line015
+    2300056: Line019
+    2300058: Line020
+    2300060: Line021
+    2300062: Line022
+    2300064: Line023
+    2300066: Line024
+    2300068: Line025
+    2300070: Line026
+    2300072: Line027
+    2300074: Object001
+    2300076: Plane001
+    2300078: Sphere001
+    2300080: Sphere002
+    2300082: Sphere003
+    2300084: Sphere004
+    2300086: Sphere005
+    2300088: Sphere006
+    2300090: Sphere007
+    2300092: Sphere008
+    2300094: Sphere009
+    2300096: Sphere010
+    2300098: Sphere011
+    2300100: Sphere012
+    3300000: Box001
+    3300002: Box001 1
+    3300004: Box002
+    3300006: Box002 1
+    3300008: Box003
+    3300010: Box004
+    3300012: Box005
+    3300014: Box006
+    3300016: Box007
+    3300018: Cylinder001
+    3300020: Cylinder002
+    3300022: Cylinder003
+    3300024: Cylinder004
+    3300026: Cylinder005
+    3300028: Cylinder007
+    3300030: Line001
+    3300032: Line002
+    3300034: Line003
+    3300036: Line004
+    3300038: Line005
+    3300040: Line006
+    3300042: Line007
+    3300044: Line008
+    3300046: Line010
+    3300048: Line012
+    3300050: Line013
+    3300052: Line014
+    3300054: Line015
+    3300056: Line019
+    3300058: Line020
+    3300060: Line021
+    3300062: Line022
+    3300064: Line023
+    3300066: Line024
+    3300068: Line025
+    3300070: Line026
+    3300072: Line027
+    3300074: Object001
+    3300076: Plane001
+    3300078: Sphere001
+    3300080: Sphere002
+    3300082: Sphere003
+    3300084: Sphere004
+    3300086: Sphere005
+    3300088: Sphere006
+    3300090: Sphere007
+    3300092: Sphere008
+    3300094: Sphere009
+    3300096: Sphere010
+    3300098: Sphere011
+    3300100: Sphere012
+    4300000: Box001
+    4300002: Box002
+    4300004: Box003
+    4300006: Box004
+    4300008: Box005
+    4300010: Box006
+    4300012: Box007
+    4300014: Line012
+    4300016: Line013
+    4300018: Line014
+    4300020: Line015
+    4300022: Line019
+    4300024: Line020
+    4300026: Line021
+    4300028: Line022
+    4300030: Plane001
+    4300032: Box001
+    4300034: Cylinder001
+    4300036: Cylinder002
+    4300038: Line001
+    4300040: Line002
+    4300042: Line003
+    4300044: Line004
+    4300046: Line005
+    4300048: Line006
+    4300050: Line007
+    4300052: Line008
+    4300054: Line010
+    4300056: Box002
+    4300058: Cylinder003
+    4300060: Sphere011
+    4300062: Sphere002
+    4300064: Sphere003
+    4300066: Sphere004
+    4300068: Sphere005
+    4300070: Sphere006
+    4300072: Sphere007
+    4300074: Sphere008
+    4300076: Sphere009
+    4300078: Sphere010
+    4300080: Sphere012
+    4300082: Sphere001
+    4300084: Object001
+    4300086: Line024
+    4300088: Line025
+    4300090: Line026
+    4300092: Cylinder004
+    4300094: Line027
+    4300096: Cylinder005
+    4300098: Cylinder007
+    4300100: Line023
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

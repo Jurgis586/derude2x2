@@ -1,0 +1,172 @@
+{
+	"asset": {
+		"generator": "Unity 2018.2.0b3",
+		"extras": {
+			"exporterVersion" : "2.2.1"
+		},
+		"version": "2.0"
+	},
+	"accessors": [
+		{
+			"bufferView": 2,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 45348,
+			"max": [ 61, 126, 62 ],
+			"min": [ -61, 0, -62 ],
+			"type": "VEC3"
+		},
+		{
+			"bufferView": 2,
+			"byteOffset": 544176,
+			"componentType": 5126,
+			"count": 45348,
+			"max": [ 1, 1, 1 ],
+			"min": [ -1, -1, -1 ],
+			"type": "VEC3"
+		},
+		{
+			"bufferView": 1,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 45348,
+			"max": [ 0.677734, 0.5 ],
+			"min": [ 0.0605469, 0.5 ],
+			"type": "VEC2"
+		},
+		{
+			"bufferView": 3,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 45348,
+			"max": [ 1, 0, 0, 1 ],
+			"min": [ 1, 0, 0, 1 ],
+			"type": "VEC4"
+		},
+		{
+			"bufferView": 0,
+			"byteOffset": 0,
+			"componentType": 5123,
+			"count": 88938,
+			"max": [ 45347 ],
+			"min": [ 0 ],
+			"type": "SCALAR"
+		}
+	],
+	"buffers": [
+		{
+			"byteLength": 2354580,
+			"uri": "Unity2Skfb.bin"
+		}
+	],
+	"bufferViews": [
+		{
+			"buffer": 0,
+			"byteLength": 177876,
+			"target": 34963,
+			"byteOffset": 2176704
+		},
+		{
+			"buffer": 0,
+			"byteLength": 362784,
+			"target": 34962,
+			"byteStride": 8,
+			"byteOffset": 0
+		},
+		{
+			"buffer": 0,
+			"byteLength": 1088352,
+			"target": 34962,
+			"byteStride": 12,
+			"byteOffset": 362784
+		},
+		{
+			"buffer": 0,
+			"byteLength": 725568,
+			"target": 34962,
+			"byteStride": 16,
+			"byteOffset": 1451136
+		}
+	],
+	"images": [
+		{
+			"uri": "Assets/ancient arabic building.jpg"
+		}
+	],
+	"materials": [
+		{
+			"pbrMetallicRoughness": {
+				"baseColorTexture" : {
+					"index" : 0,
+					"texCoord" : 0
+				},
+				"baseColorFactor": [1, 1, 1, 1],
+				"metallicFactor": 0,
+				"roughnessFactor": 0.5
+			},
+			"emissiveFactor": [0, 0, 0],
+			"doubleSided": false,
+			"name": "ancient arabic building"
+		}
+	],
+	"meshes": [
+		{
+			"name": "mesh_anciant_arabic_building_11724anciant_arabic_building",
+			"primitives": [
+				{
+					"attributes": {
+						"POSITION": 0,
+						"NORMAL": 1,
+						"TEXCOORD_0": 2,
+						"TANGENT": 3
+					},
+					"indices": 4,
+					"material": 0,
+					"mode": 4
+				}
+			]
+		}
+	],
+	"nodes": [
+		{
+			"name": "UnityGlTF_root",
+			"children": [
+				2
+			]
+		},
+		{
+			"name": "node_anciant_arabic_building_-2304",
+			"mesh": 0
+		},
+		{
+			"name": "node_ancient arabic building_-2302",
+			"children": [
+				1
+			],
+			"matrix": [0, 0, 1, 0, -0.005584994, 0.9999843, 0, 0, -0.9999843, -0.005584994, 0, 0, -34.4, 19.3, 118.2, 1]
+		}
+	],
+	"samplers": [
+		{
+			"magFilter": 9729,
+			"minFilter": 9985,
+			"wrapS": 10497,
+			"wrapT": 10497
+		}
+	],
+	"scenes": [
+		{
+			"name":"defaultScene",
+			"nodes": [
+				0
+			]
+		}
+	],
+	"scene": 0,
+	"textures": [
+		{
+			"sampler": 0,
+			"source": 0
+		}
+	]
+}
