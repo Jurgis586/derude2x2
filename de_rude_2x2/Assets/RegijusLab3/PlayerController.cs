@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // Player
+    public Transform player;
     // Score
     public Text scoreText;
     public int score;
@@ -22,9 +24,28 @@ public class PlayerController : MonoBehaviour
     public GameObject mainMenuButton;
 
     void Start() {
+        // Set default GUI components
         lives = 3;
         score = 0;
         setScoreText();
+
+        // Set spawn location
+        int spawnCount = 5;
+        Vector3 spawn1 = new Vector3(270, 3, 250); // City gate
+        Vector3 spawn2 = new Vector3(-120, 3, 480); // Pyramid
+        Vector3 spawn3 = new Vector3(-410, 3, 760); // Labyrinth 
+        Vector3 spawn4 = new Vector3(160, 3, 720); // Temple
+        Vector3 spawn5 = new Vector3(0, 3, 200); // Sea
+        Vector3[] spawns = new Vector3[spawnCount];
+        spawns[0] = spawn1;
+        spawns[1] = spawn2;
+        spawns[2] = spawn3;
+        spawns[3] = spawn4;
+        spawns[4] = spawn5;
+
+        // Randomize spawn
+        int randomizedValue = Random.Range(0, 5);
+        player.position = spawns[randomizedValue];
     }
 
     // Sets score text for GUI
