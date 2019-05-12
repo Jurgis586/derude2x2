@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class escape_menu : MonoBehaviour
 {
@@ -10,7 +12,9 @@ public class escape_menu : MonoBehaviour
     public GameObject main_menu;
     public GameObject options_menu;
     public GameObject teleport_menu;
+    public Dropdown teleport_dropdown;
     private GameObject current_menu;
+    private Transform[] spawn_positions;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class escape_menu : MonoBehaviour
         options_menu.SetActive(false);
         teleport_menu.SetActive(false);
         current_menu = main_menu;
+        spawn_positions = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
+        teleport_dropdown = teleport_menu.GetComponentInChildren<Dropdown>();
+        set_spawns_dropdown();
     }
 
     // Update is called once per frame
@@ -50,11 +57,11 @@ public class escape_menu : MonoBehaviour
     public void close_escape_menu()
     {
         // close canvases
-        escape_menu_enabled = false;
-        escape_menu_panel.SetActive(false);
         current_menu.SetActive(false);
         current_menu = main_menu;
         main_menu.SetActive(false);
+        escape_menu_enabled = false;
+        escape_menu_panel.SetActive(false);
         Time.timeScale = old_time;
     }
 
@@ -64,6 +71,40 @@ public class escape_menu : MonoBehaviour
         current_menu.SetActive(false);
         menu.SetActive(true);
         current_menu = menu;
+    }
+
+    void set_spawns_dropdown()
+    {
+        List<string> names = new List<string>();
+
+        foreach (var item in spawn_positions)
+            names.Add(item.name);
+
+        teleport_dropdown.ClearOptions();
+        teleport_dropdown.AddOptions(names);
+
+    }
+
+    public void teleport_to(string location_name)
+    {
+        for (int i = 0; i < spawn_positions.Length; i++)
+        {
+            if(location_name == spawn_positions[i].name)
+            {
+                GameObject.Find("Player").transform.SetPositionAndRotation(spawn_positions[i].position
+                    , spawn_positions[i].rotation);
+                break;
+            }
+        }
+    }
+    public void teleport_to(int index)
+    {
+        Debug.Log(spawn_positions[index].position);
+        
+        close_escape_menu();
+
+        GameObject.Find("Player").transform.SetPositionAndRotation(spawn_positions[index].position
+            , spawn_positions[index].rotation);
     }
 
 }
