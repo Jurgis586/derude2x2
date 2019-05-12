@@ -17,7 +17,7 @@ public class enemy_script : MonoBehaviour
     void Update()
     {
         Vector3 pos = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform.position;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         agent.SetDestination(pos);
     }
 }

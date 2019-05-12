@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,22 +32,29 @@ public class PlayerController : MonoBehaviour
         setScoreText();
 
         // Set spawn location
-        int spawnCount = 5;
         Vector3 spawn1 = new Vector3(270, 3, 250); // City gate
         Vector3 spawn2 = new Vector3(-120, 3, 480); // Pyramid
         Vector3 spawn3 = new Vector3(-410, 3, 760); // Labyrinth 
         Vector3 spawn4 = new Vector3(160, 3, 720); // Temple
         Vector3 spawn5 = new Vector3(0, 3, 200); // Sea
-        Vector3[] spawns = new Vector3[spawnCount];
-        spawns[0] = spawn1;
-        spawns[1] = spawn2;
-        spawns[2] = spawn3;
-        spawns[3] = spawn4;
-        spawns[4] = spawn5;
 
-        // Randomize spawn
-        int randomizedValue = Random.Range(0, 5);
-        player.position = spawns[randomizedValue];
+        switch (PlayerPrefs.GetString("Spawn")) {
+            case "City_Entrance":
+                player.position = spawn1;
+                break;
+            case "Pyramid":
+                player.position = spawn2;
+                break;
+            case "Labyrinth":
+                player.position = spawn3;
+                break;
+            case "Temple":
+                player.position = spawn4;
+                break;
+            case "Sea":
+                player.position = spawn5;
+                break;
+        }
     }
 
     // Sets score text for GUI
@@ -71,6 +80,24 @@ public class PlayerController : MonoBehaviour
         checkIsPlayerAlive();
     }
 
+    // Saves players' score
+    private void saveScore() {
+        List<string> scores = PlayerPrefs.GetString("Scores").Split(',').ToList();
+
+        int i;
+        for (i = 0; i < scores.Count; i++)
+            if (scores[i] == "" || score > Int32.Parse(scores[i]))
+                break;
+
+        if (i != scores.Count) {
+            scores.Insert(i, score.ToString());
+        } else {
+            scores.Insert(scores.Count, score.ToString());
+        }
+
+        PlayerPrefs.SetString("Scores", string.Join(",", scores));
+    }
+
     // Checks if player is still alive
     void checkIsPlayerAlive() {
         switch(lives) {
@@ -94,11 +121,13 @@ public class PlayerController : MonoBehaviour
                 heart2.enabled = false;
                 heart1.enabled = false;
 
+                // Game over condition met
                 scoreText.enabled = false;
                 gameOverText.text = "GAME OVER";
                 finalScore.text = "Score: " + score.ToString();
                 mainMenuButton.SetActive(true);
-                Time.timeScale = 0; // this will freeze the game
+                saveScore(); // saving high score
+                //Time.timeScale = 0; // this will freeze the game
                 break;
         }
     }
