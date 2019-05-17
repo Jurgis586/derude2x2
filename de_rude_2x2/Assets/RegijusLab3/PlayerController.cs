@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Start() {
         // Set default GUI components
+        Time.timeScale = 1;
         lives = 3;
         score = 0;
         setScoreText();
@@ -127,7 +128,7 @@ public class PlayerController : MonoBehaviour
                 finalScore.text = "Score: " + score.ToString();
                 mainMenuButton.SetActive(true);
                 saveScore(); // saving high score
-                //Time.timeScale = 0; // this will freeze the game
+                Time.timeScale = 0; // this will freeze the game
                 break;
         }
     }
