@@ -19,7 +19,7 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         zombie = gameObject.GetComponent<NavMeshAgent>();
-        health = 3;
+        health = 300;
     }
 
     void Update()
@@ -30,7 +30,6 @@ public class Zombie : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullet")) {
-            Player.GetComponent<PlayerController>().changeScore(10);
             takeDamage();
         }
     }
@@ -40,9 +39,15 @@ public class Zombie : MonoBehaviour
         if (health != 0) {
             damage.Play();
         } else {
-            death.Play();
-            Player.GetComponent<PlayerController>().changeScore(100);
-            Destroy(gameObject);
+            Player.GetComponent<PlayerController>().changeScore(1000);
+            StartCoroutine(die());
         }
+    }
+
+    IEnumerator die()
+    {
+        death.Play();
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }
