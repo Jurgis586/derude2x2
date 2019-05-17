@@ -138,12 +138,18 @@ public class PlayerController : MonoBehaviour
             changeScore(-50);
         }
 
+        if (collision.gameObject.CompareTag("Score")) {
+            changeScore(100);
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Health") && lives != 3) {
             increaseLife();
             changeScore(100);
+            Destroy(collision.gameObject);
         }
     }
-
+    
     public void backToMainMenu() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
