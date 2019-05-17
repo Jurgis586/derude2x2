@@ -5,6 +5,7 @@ using UnityEngine;
 abstract public class Gun : MonoBehaviour
 {
     public string gun_name = "Gun";
+    public float accuracy = 1;
     public float damage = 100;
     public float fire_rate = 100;
     public float reload_time = 1;
