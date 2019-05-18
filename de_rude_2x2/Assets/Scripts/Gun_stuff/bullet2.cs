@@ -38,7 +38,7 @@ public class bullet2 : MonoBehaviour
             rb.velocity = transform.forward * speed;
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, raycast_range, layerMask))
+            if (Physics.Raycast(pos, transform.forward, out hit, raycast_range, layerMask))
             {
                 Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 10);
                 //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
