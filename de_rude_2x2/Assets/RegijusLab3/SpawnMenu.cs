@@ -10,27 +10,27 @@ public class SpawnMenu : MonoBehaviour
     }
 
     public void SpawnCityEntrance() {
-        PlayerPrefs.SetString("Spawn", "City_Entrance");
+        PlayerPrefs.SetString("StartSpawn", "City_Entrance");
         PlayGame();
     }
 
     public void SpawnSea() {
-        PlayerPrefs.SetString("Spawn", "Sea");
+        PlayerPrefs.SetString("StartSpawn", "Sea");
         PlayGame();
     }
 
     public void SpawnPyramid() {
-        PlayerPrefs.SetString("Spawn", "Pyramid");
+        PlayerPrefs.SetString("StartSpawn", "Pyramid");
         PlayGame();
     }
 
     public void SpawnTemple() {
-        PlayerPrefs.SetString("Spawn", "Temple");
+        PlayerPrefs.SetString("StartSpawn", "Temple");
         PlayGame();
     }
 
     public void SpawnLabyrinth() {
-        PlayerPrefs.SetString("Spawn", "Labyrinth");
+        PlayerPrefs.SetString("StartSpawn", "Labyrinth");
         PlayGame();
     }
 }

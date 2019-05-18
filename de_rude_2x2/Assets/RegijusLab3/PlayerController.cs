@@ -9,10 +9,18 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     // Player
-    public Transform player;
+    public GameObject player;
+
     // Score
     public Text scoreText;
     public int score;
+
+    // Teleports
+    public GameObject City_Entrance;
+    public GameObject Pyramid;
+    public GameObject Labyrinth;
+    public GameObject Temple;
+    public GameObject Sea;
 
     // Lives
     public int lives;
@@ -26,34 +34,26 @@ public class PlayerController : MonoBehaviour
     public GameObject mainMenuButton;
 
     void Start() {
-        // Set default GUI components
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         lives = 3;
         score = 0;
         setScoreText();
 
-        // Set spawn location
-        Vector3 spawn1 = new Vector3(270, 3, 250); // City gate
-        Vector3 spawn2 = new Vector3(-120, 3, 480); // Pyramid
-        Vector3 spawn3 = new Vector3(-410, 3, 760); // Labyrinth 
-        Vector3 spawn4 = new Vector3(160, 3, 720); // Temple
-        Vector3 spawn5 = new Vector3(0, 3, 200); // Sea
-
-        switch (PlayerPrefs.GetString("Spawn")) {
+        switch (PlayerPrefs.GetString("StartSpawn")) {
             case "City_Entrance":
-                player.position = spawn1;
+                player.transform.position = City_Entrance.transform.position;
                 break;
             case "Pyramid":
-                player.position = spawn2;
+                player.transform.position = Pyramid.transform.position;
                 break;
             case "Labyrinth":
-                player.position = spawn3;
+                player.transform.position = Labyrinth.transform.position;
                 break;
             case "Temple":
-                player.position = spawn4;
+                player.transform.position = Temple.transform.position;
                 break;
             case "Sea":
-                player.position = spawn5;
+                player.transform.position = Sea.transform.position;
                 break;
         }
     }
