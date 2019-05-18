@@ -9,6 +9,7 @@ public class player_arsenal : MonoBehaviour
     public float projectile_speed = 50f;
 
     public GameObject bullet_prefab;
+    public GameObject[] guns;
 
     private float next_fire_time = 0;
     private Camera cam;
@@ -19,12 +20,19 @@ public class player_arsenal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        guns = GameObject.FindGameObjectsWithTag("Player_gun");
+        if(guns.Length > 0)
+        {
+
+        }
         gun_obj = GameObject.Find("Gun");
         selected_gun = gun_obj.GetComponent<Gun>();
         player_gun_pos = GameObject.Find("Gun_position").GetComponent<Transform>();
         bullet_prefab = selected_gun.projectile;
         cam = transform.parent.GetComponentInChildren<Camera>();
     }
+
+
 
     void LateUpdate()
     {
