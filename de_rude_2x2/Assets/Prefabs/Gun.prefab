@@ -158,6 +158,7 @@ MonoBehaviour:
   fire_rate: 100
   reload_time: 1
   max_ammo: 150
+  current_ammo: 150
   max_clip: 30
   current_clip: 0
   projectile: {fileID: 248896815420988836, guid: d92dcffaffb770b4eaa03bbb7b7bf4dd,
