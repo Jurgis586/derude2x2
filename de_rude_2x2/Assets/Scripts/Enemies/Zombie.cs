@@ -65,6 +65,7 @@ public class Zombie : Enemy
         alive = false;
         rb.velocity = agent.velocity;
         agent.enabled = false;
+        player_collider.GetComponent<PlayerController>().changeScore(1000);
         deathSound.Play();
         StartCoroutine(remove());
     }
