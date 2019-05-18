@@ -9,6 +9,6 @@ abstract public class Enemy : MonoBehaviour
     public float move_speed = 15;
     public bool alive = true;
 
-    abstract public void get_damage(float damage, string type = "flat");
+    abstract public void receive_damage(float damage, string type = "flat");
     abstract public void die();
 }

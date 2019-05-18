@@ -15,14 +15,14 @@ public class player_arsenal : MonoBehaviour
 
     private Transform player_gun_pos;
     private GameObject gun_obj;
-    private Gun gun;
+    private Gun selected_gun;
     // Start is called before the first frame update
     void Start()
     {
         gun_obj = GameObject.Find("Gun");
-        gun = gun_obj.GetComponent<Gun>();
+        selected_gun = gun_obj.GetComponent<Gun>();
         player_gun_pos = GameObject.Find("Gun_position").GetComponent<Transform>();
-        bullet_prefab = gun.projectile;
+        bullet_prefab = selected_gun.projectile;
         cam = transform.parent.GetComponentInChildren<Camera>();
     }
 
@@ -34,9 +34,9 @@ public class player_arsenal : MonoBehaviour
         {
             next_fire_time = Time.time + fire_rate;
             //Debug.Log("shoot");
-            var randomNumberX = Random.Range(-gun.accuracy, gun.accuracy);
-            var randomNumberY = Random.Range(-gun.accuracy, gun.accuracy);
-            var randomNumberZ = Random.Range(-gun.accuracy, gun.accuracy);
+            var randomNumberX = Random.Range(-selected_gun.accuracy, selected_gun.accuracy);
+            var randomNumberY = Random.Range(-selected_gun.accuracy, selected_gun.accuracy);
+            var randomNumberZ = Random.Range(-selected_gun.accuracy, selected_gun.accuracy);
 
             // Bit shift the index of the layer (9) to get a bit mask
             int layerMask = 1 << 9;
@@ -46,17 +46,17 @@ public class player_arsenal : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
             {
                 //Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.point, Color.green, 2f);
-                gun.projectile_spawn_point.transform.LookAt(hit.point);
-                bullet = Instantiate(bullet_prefab, gun.projectile_spawn_point.transform.position
-                    , gun.projectile_spawn_point.transform.rotation);
+                selected_gun.projectile_spawn_point.transform.LookAt(hit.point);
+                bullet = Instantiate(bullet_prefab, selected_gun.projectile_spawn_point.transform.position
+                    , selected_gun.projectile_spawn_point.transform.rotation);
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
             }
             else
             {
                 Debug.DrawRay(cam.transform.position, cam.transform.forward * 3000, Color.red, 2f);
-                bullet = Instantiate(bullet_prefab, gun.projectile_spawn_point.transform.position
-                    , gun.transform.rotation);
+                bullet = Instantiate(bullet_prefab, selected_gun.projectile_spawn_point.transform.position
+                    , selected_gun.transform.rotation);
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
             }

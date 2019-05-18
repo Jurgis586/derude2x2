@@ -27,12 +27,15 @@ public class enemy_script : Enemy
         if (alive)
         {
             //get_damage(0.5f);
-            if(agent.enabled)
-                agent.SetDestination(player_collider.position);
+            if (agent.enabled)
+            {
+                agent.SetDestination(player_collider.transform.position);
+                Debug.DrawRay(player_collider.transform.position, Vector3.up * 2000, Color.magenta);
+            }
         }
     }
 
-    public override void get_damage(float damage, string type = "flat")
+    public override void receive_damage(float damage, string type = "flat")
     {
         switch (type)
         {

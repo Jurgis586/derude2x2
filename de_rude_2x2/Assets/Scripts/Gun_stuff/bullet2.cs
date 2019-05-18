@@ -5,7 +5,6 @@ using UnityEngine;
 public class bullet2 : MonoBehaviour
 {
     public float speed = 10;
-    public float lifetime = 5;
     private int layerMask;
     private Rigidbody rb;
     private Vector3 offset;
@@ -32,7 +31,7 @@ public class bullet2 : MonoBehaviour
     {
         if(range_left >= 0)
         {
-            Vector3 pos = transform.position - offset;
+            Vector3 pos = transform.position - (transform.forward * (transform.localScale.z / 2));
             raycast_range = 1 + speed * Time.deltaTime;
             if (raycast_range < 0)
                 raycast_range = 1;
@@ -48,7 +47,7 @@ public class bullet2 : MonoBehaviour
                     //do damage
                     enemy_script enemy = hit.collider.GetComponent<enemy_script>();
                     if(enemy)
-                        enemy.get_damage(damage);
+                        enemy.receive_damage(damage);
                 }
                 Destroy(gameObject);
             }
