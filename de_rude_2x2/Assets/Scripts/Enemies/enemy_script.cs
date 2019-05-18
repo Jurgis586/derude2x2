@@ -37,6 +37,7 @@ public class enemy_script : Enemy
 
     public override void receive_damage(float damage, string type = "flat")
     {
+        Debug.Log("received_damage");
         switch (type)
         {
             // percent from current hp

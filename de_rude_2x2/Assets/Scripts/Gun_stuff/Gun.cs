@@ -10,13 +10,25 @@ abstract public class Gun : MonoBehaviour
     public float fire_rate = 100;
     public float reload_time = 1;
     public float max_ammo = 150;
+    public float current_ammo = 150;
     public float max_clip = 30;
     public float current_clip = 0;
     public GameObject projectile;
     public bool unlocked = true;
     public Transform projectile_spawn_point;
-    private bool can_shoot = true;
+    protected bool can_shoot = true;
 
-    abstract public void shoot();
-    abstract public void reload();
+    abstract public void Shoot();
+    abstract public void Reload();
+
+    public void Hide_Gun()
+    {
+        MeshRenderer renderer = GetComponentInChildren<MeshRenderer>(true);
+        renderer.enabled = false;
+    }
+    public void Show_Gun()
+    {
+        MeshRenderer renderer = GetComponentInChildren<MeshRenderer>(true);
+        renderer.enabled = true;
+    }
 }

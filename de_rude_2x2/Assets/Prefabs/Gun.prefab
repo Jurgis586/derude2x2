@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4528656095052034979}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Player_gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   fire_rate: 100
   reload_time: 1
   max_ammo: 150
+  current_ammo: 150
   max_clip: 30
   current_clip: 0
   projectile: {fileID: 248896815420988836, guid: d92dcffaffb770b4eaa03bbb7b7bf4dd,

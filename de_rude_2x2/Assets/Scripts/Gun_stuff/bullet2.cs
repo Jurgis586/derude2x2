@@ -31,21 +31,21 @@ public class bullet2 : MonoBehaviour
     {
         if(range_left >= 0)
         {
-            Vector3 pos = transform.position - (transform.forward * (transform.localScale.z / 2));
-            raycast_range = 1 + speed * Time.deltaTime;
+            Vector3 pos = transform.position - (transform.forward * transform.localScale.z);
+            raycast_range = 1 + speed * Time.deltaTime * 1.2f;
             if (raycast_range < 0)
                 raycast_range = 1;
             rb.velocity = transform.forward * speed;
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(pos, transform.forward, out hit, raycast_range, layerMask))
+            if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
             {
                 Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 10);
                 //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
                 if(hit.transform.tag == "Enemy")
                 {
                     //do damage
-                    enemy_script enemy = hit.collider.GetComponent<enemy_script>();
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
                     if(enemy)
                         enemy.receive_damage(damage);
                 }
