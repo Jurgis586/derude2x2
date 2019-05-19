@@ -21,13 +21,15 @@ public class player_arsenal : MonoBehaviour
         cam = transform.parent.GetComponentInChildren<Camera>();
 
         guns = GameObject.FindGameObjectsWithTag("Player_gun");
+        gun_index = -1;
         if (guns.Length > 0)
         {
             for (int i = 0; i < guns.Length; i++)
             {
+                if (gun_index == -1 && guns[i].GetComponent<Gun>().unlocked)
+                    gun_index = i;
                 guns[i].GetComponent<Gun>().Hide_Gun();
             }
-            gun_index = 0;
             Select_Gun();
         }
         else
