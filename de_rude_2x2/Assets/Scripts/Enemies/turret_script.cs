@@ -15,6 +15,7 @@ public class turret_script : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        alive = false;
         rb = gameObject.GetComponent<Rigidbody>();
         hp = hp_max;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
@@ -27,8 +28,6 @@ public class turret_script : Enemy
     {
         if (alive)
         {
-            Debug.DrawRay(player_collider.transform.position, Vector3.up * 2000, Color.magenta);
-
             Vector3 dir = player_collider.transform.position - transform.position;
             float angle = Vector3.Angle(dir, transform.forward);
             if (Time.time > next_fire_time && angle < shooting_angle)

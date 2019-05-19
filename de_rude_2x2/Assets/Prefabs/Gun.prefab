@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a6b9c9be47353a748a33f4d37df6d88f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,8 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun_name: Gun
   accuracy: 0
+  projectile_speed: 200
   damage: 100
-  fire_rate: 100
+  fire_rate: 0.2
   reload_time: 1
   max_ammo: 150
   current_ammo: 150
@@ -163,5 +164,6 @@ MonoBehaviour:
   current_clip: 0
   projectile: {fileID: 248896815420988836, guid: d92dcffaffb770b4eaa03bbb7b7bf4dd,
     type: 3}
-  unlocked: 1
+  unlocked: 0
   projectile_spawn_point: {fileID: 4528656094155019172}
+  can_shoot: 1

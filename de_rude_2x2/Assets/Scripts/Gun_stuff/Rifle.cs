@@ -7,6 +7,7 @@ public class Rifle : Gun
     // Start is called before the first frame update
     void Start()
     {
+        current_ammo = max_ammo;
         Reload();
     }
 
@@ -31,7 +32,7 @@ public class Rifle : Gun
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 
-                bullet.GetComponent<bullet2>().init(damage, projectile_speed);
+                bullet.GetComponent<bullet2>().init(damage, projectile_speed, mask);
 
                 current_clip--;
             }

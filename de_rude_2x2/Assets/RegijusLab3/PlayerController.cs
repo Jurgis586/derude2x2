@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public MovementRB player_mov;
     private float speed_duration = 0;
+    public bool teleport_on_start = true;
+    public bool lock_cursor = false;
 
     // Score
     public Text scoreText;
@@ -36,29 +38,38 @@ public class PlayerController : MonoBehaviour
     public GameObject mainMenuButton;
 
     void Start() {
+        if (lock_cursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         player_mov = player.GetComponentInChildren<MovementRB>();
         Time.timeScale = 1;
         lives = 3;
         score = 0;
         setScoreText();
-        /*
-        switch (PlayerPrefs.GetString("StartSpawn")) {
-            case "City_Entrance":
-                player.transform.position = City_Entrance.transform.position;
-                break;
-            case "Pyramid":
-                player.transform.position = Pyramid.transform.position;
-                break;
-            case "Labyrinth":
-                player.transform.position = Labyrinth.transform.position;
-                break;
-            case "Temple":
-                player.transform.position = Temple.transform.position;
-                break;
-            case "Sea":
-                player.transform.position = Sea.transform.position;
-                break;
-        }*/
+
+        if (teleport_on_start)
+        {
+            switch (PlayerPrefs.GetString("StartSpawn"))
+            {
+                case "City_Entrance":
+                    player.transform.position = City_Entrance.transform.position;
+                    break;
+                case "Pyramid":
+                    player.transform.position = Pyramid.transform.position;
+                    break;
+                case "Labyrinth":
+                    player.transform.position = Labyrinth.transform.position;
+                    break;
+                case "Temple":
+                    player.transform.position = Temple.transform.position;
+                    break;
+                case "Sea":
+                    player.transform.position = Sea.transform.position;
+                    break;
+            }
+        }
     }
 
     // Sets score text for GUI

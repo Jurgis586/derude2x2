@@ -21,13 +21,15 @@ public class player_arsenal : MonoBehaviour
         cam = transform.parent.GetComponentInChildren<Camera>();
 
         guns = GameObject.FindGameObjectsWithTag("Player_gun");
+        gun_index = -1;
         if (guns.Length > 0)
         {
             for (int i = 0; i < guns.Length; i++)
             {
+                if (gun_index == -1 && guns[i].GetComponent<Gun>().unlocked)
+                    gun_index = i;
                 guns[i].GetComponent<Gun>().Hide_Gun();
             }
-            gun_index = 0;
             Select_Gun();
         }
         else
@@ -81,15 +83,20 @@ public class player_arsenal : MonoBehaviour
 
     private void Select_Gun()
     {
-        //hide previous gun
-        if(curr_gun_script != null)
-            curr_gun_script.Hide_Gun();
 
-        //select new gun and show it
-        curr_gun_obj = guns[gun_index];
-        curr_gun_script = curr_gun_obj.GetComponent<Gun>();
-        curr_gun_obj.transform.position = player_gun_pos.position;
-        curr_gun_script.Show_Gun();
+        if(curr_gun_obj != guns[gun_index])
+        {
+            //hide previous gun
+            if (curr_gun_script != null)
+                curr_gun_script.Hide_Gun();
+
+            //select new gun and show it
+            next_fire_time = Time.time + 1;
+            curr_gun_obj = guns[gun_index];
+            curr_gun_script = curr_gun_obj.GetComponent<Gun>();
+            curr_gun_obj.transform.position = player_gun_pos.position;
+            curr_gun_script.Show_Gun();
+        }
     }
 
     void LateUpdate()
@@ -107,15 +114,14 @@ public class player_arsenal : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
             {
                 //Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.point, Color.green, 2f);
-                curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
+                //curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
 
                 // gun.shoot
                 curr_gun_script.Shoot();
             }
             else
             {
-                Debug.DrawRay(cam.transform.position, cam.transform.forward * 3000, Color.red, 2f);
-                curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
+                //curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
                 curr_gun_script.Shoot();
             }
         }
