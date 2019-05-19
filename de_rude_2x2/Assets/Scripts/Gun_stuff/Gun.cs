@@ -6,6 +6,7 @@ abstract public class Gun : MonoBehaviour
 {
     public string gun_name = "Gun";
     public float accuracy = 1;
+    public float projectile_speed = 200f;
     public float damage = 100;
     public float fire_rate = 100;
     public float reload_time = 1;

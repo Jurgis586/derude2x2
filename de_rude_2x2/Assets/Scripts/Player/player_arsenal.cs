@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class player_arsenal : MonoBehaviour
 {
-    public float fire_rate = 0.5f;
-    public int damage = 1;
-    public float projectile_speed = 50f;
-
-    public GameObject bullet_prefab;
     public GameObject[] guns;
 
     private float next_fire_time = 0;
@@ -95,9 +90,6 @@ public class player_arsenal : MonoBehaviour
         curr_gun_script = curr_gun_obj.GetComponent<Gun>();
         curr_gun_obj.transform.position = player_gun_pos.position;
         curr_gun_script.Show_Gun();
-
-        bullet_prefab = curr_gun_script.projectile;
-
     }
 
     void LateUpdate()
@@ -105,13 +97,12 @@ public class player_arsenal : MonoBehaviour
         curr_gun_obj.transform.SetPositionAndRotation(player_gun_pos.position, player_gun_pos.rotation);
         if (Input.GetButton("Fire1") && Time.time > next_fire_time)
         {
-            next_fire_time = Time.time + fire_rate;
+            next_fire_time = Time.time + curr_gun_script.fire_rate;
             //Debug.Log("shoot");
 
             // Bit shift the index of the layer (9) to get a bit mask
             int layerMask = 1 << 9;
             layerMask = ~layerMask;
-            GameObject bullet;
             RaycastHit hit;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
             {

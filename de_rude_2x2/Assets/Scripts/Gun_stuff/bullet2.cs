@@ -16,14 +16,15 @@ public class bullet2 : MonoBehaviour
     void Start()
     {
         offset = new Vector3(0, 0, transform.localScale.z/2);
-        layerMask = 1 << 2; // = "ignore raycast" layer
-        layerMask = ~layerMask; // raycast against everything BUT that layer
         rb = GetComponent<Rigidbody>();
     }
 
-    public void init(float damage)
+    public void init(float damage, float speed, int layerMask = 2)
     {
         this.damage = damage;
+        this.layerMask = 1 << layerMask; // = "ignore raycast" layer
+        this.layerMask = ~this.layerMask; // raycast against everything BUT that layer
+
     }
 
     // Update is called once per frame
@@ -48,6 +49,10 @@ public class bullet2 : MonoBehaviour
                     Enemy enemy = hit.collider.GetComponent<Enemy>();
                     if(enemy)
                         enemy.receive_damage(damage);
+                }
+                else if(hit.transform.tag == "Player")
+                {
+                    hit.transform.GetComponentInChildren<PlayerController>().decreaseLife();
                 }
                 Destroy(gameObject);
             }

@@ -78,7 +78,12 @@ public class escape_menu : MonoBehaviour
         List<string> names = new List<string>();
 
         foreach (var item in spawn_positions)
-            names.Add(item.name);
+        {
+            if(item.name != "SpawnPoints")
+            {
+                names.Add(item.name);
+            }
+        }
 
         teleport_dropdown.ClearOptions();
         teleport_dropdown.AddOptions(names);
@@ -103,7 +108,7 @@ public class escape_menu : MonoBehaviour
         
         close_escape_menu();
 
-        GameObject.Find("Player").transform.SetPositionAndRotation(spawn_positions[index].position
+        GameObject.Find("Player").GetComponentInChildren<CapsuleCollider>().transform.SetPositionAndRotation(spawn_positions[index].position
             , spawn_positions[index].rotation);
     }
 

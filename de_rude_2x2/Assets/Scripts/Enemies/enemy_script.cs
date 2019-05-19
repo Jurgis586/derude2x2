@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class enemy_script : Enemy
 {
+    public float shooting_angle = 10f;
     private NavMeshAgent agent;
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
     private Rigidbody rb;
-
+    private Gun gun_script;
+    private float next_fire_time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,8 @@ public class enemy_script : Enemy
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = move_speed;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
+        gun_script = GetComponentInChildren<Gun>();
+        gun_script.Reload();
     }
 
     // Update is called once per frame
@@ -31,6 +35,15 @@ public class enemy_script : Enemy
             {
                 agent.SetDestination(player_collider.transform.position);
                 Debug.DrawRay(player_collider.transform.position, Vector3.up * 2000, Color.magenta);
+
+                Vector3 dir = player_collider.transform.position - transform.position;
+                float angle = Vector3.Angle(dir, transform.forward);
+                if (Time.time > next_fire_time && angle < shooting_angle )
+                {
+                    next_fire_time = Time.time + gun_script.fire_rate;
+
+                    gun_script.Shoot();
+                }
             }
         }
     }
@@ -55,7 +68,7 @@ public class enemy_script : Enemy
                 hp -= damage;
                 break;
         }
-        if (hp <= 0)
+        if (alive && hp <= 0)
             die();
     }
 
