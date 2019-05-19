@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementRB : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float air_speed = 10.0f;
     public float gravity = 10.0f;
     public float maxVelocityChange = 10.0f;
     public bool canJump = true;
@@ -14,6 +15,8 @@ public class MovementRB : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider col;
 
+    private float default_speed;
+    private float speed_buff_end = 0;
 
     public float airdrag = 0.2f;
     public float normaldrag;
@@ -23,6 +26,8 @@ public class MovementRB : MonoBehaviour
 
     void Awake()
     {
+        air_speed = speed / 2;
+        default_speed = speed;
         rb = GetComponentInChildren<Rigidbody>();
         col = GetComponentInChildren<CapsuleCollider>();
         dToGround = transform.localScale.y * (col.height / 2) + GroundDistance;
@@ -31,42 +36,52 @@ public class MovementRB : MonoBehaviour
         normaldrag = rb.drag;
     }
 
+    void Update()
+    {
+        if (speed_buff_end < Time.time)
+        {
+            speed = default_speed;
+        }
+    }
+
     void FixedUpdate()
     {
         _isGrounded = IsGrounded();
-        if (_isGrounded)
-        {
-            //print("grounded");
-            // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            targetVelocity = transform.TransformDirection(targetVelocity);
-            if (Input.GetKey(KeyCode.LeftShift))
-                targetVelocity *= speed*sprintSpeedMult;
-            else
-                targetVelocity *= speed;
+
+
+        //print("grounded");
+        // Calculate how fast we should be moving
+        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        targetVelocity = transform.TransformDirection(targetVelocity);
+        if (Input.GetKey(KeyCode.LeftShift) && _isGrounded)
+            targetVelocity *= speed*sprintSpeedMult;
+        else
+            targetVelocity *= speed;
             
 
-            // Apply a force that attempts to reach our target velocity
-            Vector3 velocity = rb.velocity;
-            Vector3 velocityChange = (targetVelocity - velocity);
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
+        // Apply a force that attempts to reach our target velocity
+        Vector3 velocity = rb.velocity;
+        Vector3 velocityChange = (targetVelocity - velocity);
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, 2*maxVelocityChange);
+        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, 2*maxVelocityChange);
+        velocityChange.y = 0;
+        if(_isGrounded)
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        else
+            rb.AddForce(velocityChange / 2, ForceMode.VelocityChange);
 
-            // Jump
-            if (_isGrounded && Input.GetButton("Jump"))
-            {
-                rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
-                _isGrounded = false;
-                rb.drag = airdrag;
-            }
+        // Jump
+        if (_isGrounded && Input.GetButton("Jump"))
+        {
+            rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+            //_isGrounded = false;
+            rb.drag = airdrag;
         }
 
-        // We apply gravity manually for more tuning control
         rb.AddForce(new Vector3(0, -gravity * rb.mass * 2, 0));
 
-        _isGrounded = false;
+
+        //_isGrounded = false;
     }
 
     float CalculateJumpVerticalSpeed()
@@ -90,5 +105,14 @@ public class MovementRB : MonoBehaviour
             //print(dToGround);
             return false;
         }
+    }
+
+    public void change_speed(float mult, float duration)
+    {
+        if(Mathf.Approximately(speed, default_speed))
+        {
+            speed *= mult;
+        }
+        speed_buff_end = Time.time + duration;
     }
 }

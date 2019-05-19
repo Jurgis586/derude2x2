@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     // Player
     public GameObject player;
+    public MovementRB player_mov;
+    private float speed_duration = 0;
 
     // Score
     public Text scoreText;
@@ -34,11 +36,12 @@ public class PlayerController : MonoBehaviour
     public GameObject mainMenuButton;
 
     void Start() {
-        //Time.timeScale = 1;
+        player_mov = player.GetComponentInChildren<MovementRB>();
+        Time.timeScale = 1;
         lives = 3;
         score = 0;
         setScoreText();
-
+        /*
         switch (PlayerPrefs.GetString("StartSpawn")) {
             case "City_Entrance":
                 player.transform.position = City_Entrance.transform.position;
@@ -55,7 +58,7 @@ public class PlayerController : MonoBehaviour
             case "Sea":
                 player.transform.position = Sea.transform.position;
                 break;
-        }
+        }*/
     }
 
     // Sets score text for GUI
@@ -150,7 +153,30 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-    
+
+    public void apply_effect(string effect_name, float value)
+    {
+        switch (effect_name)
+        {
+            case "speed":
+                Debug.Log("speed");
+                player_mov.change_speed(value, 10);
+                break;
+
+            case "health":
+                for (int i = 0; i < value; i++)
+                    increaseLife();
+                break;
+
+            case "ammo":
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
     public void backToMainMenu() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }

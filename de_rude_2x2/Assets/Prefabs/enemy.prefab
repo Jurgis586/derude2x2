@@ -150,6 +150,7 @@ MonoBehaviour:
   hp: 100
   move_speed: 15
   alive: 1
+  score: 100
   shooting_angle: 10
 --- !u!1001 &1711535407253796685
 PrefabInstance:

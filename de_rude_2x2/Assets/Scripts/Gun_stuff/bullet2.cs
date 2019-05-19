@@ -22,6 +22,7 @@ public class bullet2 : MonoBehaviour
     public void init(float damage, float speed, int layerMask = 2)
     {
         this.damage = damage;
+        this.speed = speed;
         this.layerMask = 1 << layerMask; // = "ignore raycast" layer
         this.layerMask = ~this.layerMask; // raycast against everything BUT that layer
 
@@ -46,13 +47,19 @@ public class bullet2 : MonoBehaviour
                 if(hit.transform.tag == "Enemy")
                 {
                     //do damage
-                    Enemy enemy = hit.collider.GetComponent<Enemy>();
-                    if(enemy)
+                    Enemy enemy = hit.collider.GetComponentInChildren<Enemy>();
+                    if (enemy)
                         enemy.receive_damage(damage);
+                    else
+                        Debug.Log("ENEMY NOT FOUND");
                 }
                 else if(hit.transform.tag == "Player")
                 {
                     hit.transform.GetComponentInChildren<PlayerController>().decreaseLife();
+                }
+                else
+                {
+                    Debug.Log("tag: " + hit.transform.tag);
                 }
                 Destroy(gameObject);
             }

@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8697110055474791979}
   - component: {fileID: 8697110055474791980}
+  - component: {fileID: 6711979131553971228}
   m_Layer: 0
   m_Name: Pickup_health
   m_TagString: Untagged
@@ -123,6 +124,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6711979131553971228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697110055474791978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076389cadcfb59c44b6007f94de0d0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spin_speed: 50
+  direction: {x: 0, y: 1, z: 0}
+  value: 2
+  type: health
 --- !u!1 &8697110056256147984
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +220,6 @@ GameObject:
   - component: {fileID: 8697110056626380550}
   - component: {fileID: 8697110056626380666}
   - component: {fileID: 8697110056626380665}
-  - component: {fileID: 8697110056626380551}
   m_Layer: 0
   m_Name: cube_vert
   m_TagString: Untagged
@@ -271,17 +287,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8697110056626380551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697110056626380549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad32c578d7c43841aaffbb733678b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
-  direction: {x: 0, y: 1, z: 0}

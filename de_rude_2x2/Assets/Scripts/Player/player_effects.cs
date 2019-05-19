@@ -16,16 +16,4 @@ public class player_effects : MonoBehaviour
         
     }
 
-    void apply(string effect_name, float value)
-    {
-        switch (effect_name)
-        {
-            case "speed":
-                break;
-            case "":
-                break;
-            default:
-                break;
-        }
-    }
 }
