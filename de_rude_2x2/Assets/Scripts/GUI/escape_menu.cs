@@ -8,6 +8,7 @@ public class escape_menu : MonoBehaviour
 {
     private bool escape_menu_enabled;
     private float old_time;
+    public GameObject crosshair;
     public GameObject escape_menu_panel;
     public GameObject main_menu;
     public GameObject options_menu;
@@ -44,6 +45,8 @@ public class escape_menu : MonoBehaviour
 
     void open_escape_menu()
     {
+        crosshair.SetActive(false);
+
         old_time = Time.timeScale;
         Time.timeScale = 0;
 
@@ -56,6 +59,8 @@ public class escape_menu : MonoBehaviour
 
     public void close_escape_menu()
     {
+        crosshair.SetActive(true);
+
         // close canvases
         current_menu.SetActive(false);
         current_menu = main_menu;
@@ -105,7 +110,8 @@ public class escape_menu : MonoBehaviour
     public void teleport_to(int index)
     {
         Debug.Log(spawn_positions[index].position);
-        
+
+        Destroy(teleport_dropdown.transform.Find("Dropdown List").gameObject);
         close_escape_menu();
 
         GameObject.Find("Player").GetComponentInChildren<CapsuleCollider>().transform.SetPositionAndRotation(spawn_positions[index].position

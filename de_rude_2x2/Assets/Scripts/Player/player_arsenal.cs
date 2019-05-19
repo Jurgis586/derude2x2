@@ -83,12 +83,13 @@ public class player_arsenal : MonoBehaviour
 
     private void Select_Gun()
     {
-        //hide previous gun
-        if(curr_gun_script != null)
-            curr_gun_script.Hide_Gun();
 
         if(curr_gun_obj != guns[gun_index])
-            {
+        {
+            //hide previous gun
+            if (curr_gun_script != null)
+                curr_gun_script.Hide_Gun();
+
             //select new gun and show it
             next_fire_time = Time.time + 1;
             curr_gun_obj = guns[gun_index];
