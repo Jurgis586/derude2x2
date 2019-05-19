@@ -85,5 +85,6 @@ public class enemy_script : Enemy
         rb.velocity = agent.velocity;
         agent.enabled = false;
         destroy_time = Time.time + time_after_death;
+        player_collider.GetComponent<PlayerController>().changeScore(score);
     }
 }

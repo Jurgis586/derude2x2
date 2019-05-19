@@ -35,5 +35,6 @@ public class boss_eye : Enemy
     public override void die()
     {
         alive = false;
+        GameObject.Find("Player").GetComponentInChildren<PlayerController>().changeScore(score);
     }
 }
