@@ -12,12 +12,12 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
-  m_SuspendThreshold: -80
+  m_SuspendThreshold: -41
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 59e946997f16fd945aafa6f73b84278e
-    name: Bass
+    name: MyExposedParam
   - guid: 3b5ad8e4ea3f6204f9cf4f50de28930f
     name: Effects
   - guid: f0386c1da7b7259469fc5b94c3cafcac
@@ -78,6 +78,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: c925ed763b971694fb43775498c4a4ab
   m_FloatValues:
+    59e946997f16fd945aafa6f73b84278e: 1.39
     f0386c1da7b7259469fc5b94c3cafcac: 0.025578512
     c33caa0eec7abbd4c842a641c6a04c7c: -0.43201196
   m_TransitionOverrides: {}
