@@ -14,6 +14,8 @@ public class player_arsenal : MonoBehaviour
     private GameObject curr_gun_obj;
     private Gun curr_gun_script;
     private int gun_index;
+
+    private MovementRB player_mov;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +37,14 @@ public class player_arsenal : MonoBehaviour
         else
             Debug.Log("ERROR: no guns with tag \"Player_gun\" found");
         default_gun_rot = curr_gun_script.projectile_spawn_point.localRotation;
+
+        player_mov = GameObject.Find("Player").GetComponentInChildren<MovementRB>();
     }
 
     void Update()
     {
         float mousewheel = Input.GetAxis("Mouse ScrollWheel");
-        if(mousewheel > 0f)
+        if(player_mov.player_is_active && mousewheel > 0f)
         {
             Next_Gun();
             //Debug.Log("MOUSEWHEEL: " + mousewheel);
@@ -101,28 +105,31 @@ public class player_arsenal : MonoBehaviour
 
     void LateUpdate()
     {
-        curr_gun_obj.transform.SetPositionAndRotation(player_gun_pos.position, player_gun_pos.rotation);
-        if (Input.GetButton("Fire1") && Time.time > next_fire_time)
+        if (player_mov.player_is_active)
         {
-            next_fire_time = Time.time + curr_gun_script.fire_rate;
-            //Debug.Log("shoot");
-
-            // Bit shift the index of the layer (9) to get a bit mask
-            int layerMask = 1 << 9;
-            layerMask = ~layerMask;
-            RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
+            curr_gun_obj.transform.SetPositionAndRotation(player_gun_pos.position, player_gun_pos.rotation);
+            if (Input.GetButton("Fire1") && Time.time > next_fire_time)
             {
-                //Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.point, Color.green, 2f);
-                //curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
+                next_fire_time = Time.time + curr_gun_script.fire_rate;
+                //Debug.Log("shoot");
 
-                // gun.shoot
-                curr_gun_script.Shoot();
-            }
-            else
-            {
-                //curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
-                curr_gun_script.Shoot();
+                // Bit shift the index of the layer (9) to get a bit mask
+                int layerMask = 1 << 9;
+                layerMask = ~layerMask;
+                RaycastHit hit;
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
+                {
+                    //Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.point, Color.green, 2f);
+                    //curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
+
+                    // gun.shoot
+                    curr_gun_script.Shoot();
+                }
+                else
+                {
+                    //curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
+                    curr_gun_script.Shoot();
+                }
             }
         }
     }

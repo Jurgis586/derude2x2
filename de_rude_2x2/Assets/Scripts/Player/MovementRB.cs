@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementRB : MonoBehaviour
 {
+    public bool player_is_active;
     public float speed = 10.0f;
     public float air_speed = 10.0f;
     public float gravity = 10.0f;
@@ -34,6 +35,7 @@ public class MovementRB : MonoBehaviour
         rb.freezeRotation = true;
         rb.useGravity = true;
         normaldrag = rb.drag;
+        player_is_active = true;
     }
 
     void Update()
@@ -46,42 +48,44 @@ public class MovementRB : MonoBehaviour
 
     void FixedUpdate()
     {
-        _isGrounded = IsGrounded();
-
-
-        //print("grounded");
-        // Calculate how fast we should be moving
-        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        targetVelocity = transform.TransformDirection(targetVelocity);
-        if (Input.GetKey(KeyCode.LeftShift) && _isGrounded)
-            targetVelocity *= speed*sprintSpeedMult;
-        else
-            targetVelocity *= speed;
-            
-
-        // Apply a force that attempts to reach our target velocity
-        Vector3 velocity = rb.velocity;
-        Vector3 velocityChange = (targetVelocity - velocity);
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, 2*maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, 2*maxVelocityChange);
-        velocityChange.y = 0;
-        if(_isGrounded)
-            rb.AddForce(velocityChange, ForceMode.VelocityChange);
-        else
-            rb.AddForce(velocityChange / 2, ForceMode.VelocityChange);
-
-        // Jump
-        if (_isGrounded && Input.GetButton("Jump"))
+        if (player_is_active)
         {
-            rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+            _isGrounded = IsGrounded();
+
+            //print("grounded");
+            // Calculate how fast we should be moving
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            targetVelocity = transform.TransformDirection(targetVelocity);
+            if (Input.GetKey(KeyCode.LeftShift) && _isGrounded)
+                targetVelocity *= speed * sprintSpeedMult;
+            else
+                targetVelocity *= speed;
+
+
+            // Apply a force that attempts to reach our target velocity
+            Vector3 velocity = rb.velocity;
+            Vector3 velocityChange = (targetVelocity - velocity);
+            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, 2 * maxVelocityChange);
+            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, 2 * maxVelocityChange);
+            velocityChange.y = 0;
+            if (_isGrounded)
+                rb.AddForce(velocityChange, ForceMode.VelocityChange);
+            else
+                rb.AddForce(velocityChange / 2, ForceMode.VelocityChange);
+
+            // Jump
+            if (_isGrounded && Input.GetButton("Jump"))
+            {
+                rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+                //_isGrounded = false;
+                rb.drag = airdrag;
+            }
+
+            rb.AddForce(new Vector3(0, -gravity * rb.mass * 2, 0));
+
+
             //_isGrounded = false;
-            rb.drag = airdrag;
         }
-
-        rb.AddForce(new Vector3(0, -gravity * rb.mass * 2, 0));
-
-
-        //_isGrounded = false;
     }
 
     float CalculateJumpVerticalSpeed()

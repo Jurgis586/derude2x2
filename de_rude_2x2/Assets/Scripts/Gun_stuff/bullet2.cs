@@ -29,7 +29,7 @@ public class bullet2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(range_left >= 0)
         {

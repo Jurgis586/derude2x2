@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     // Player
     public GameObject player;
-    public MovementRB player_mov;
+    private MovementRB player_mov;
     private float speed_duration = 0;
     public bool teleport_on_start = true;
     public bool lock_cursor = false;
@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
 
         player_mov = player.GetComponentInChildren<MovementRB>();
         Time.timeScale = 1;
@@ -135,6 +138,8 @@ public class PlayerController : MonoBehaviour
                 heart3.enabled = false;
                 heart2.enabled = false;
                 heart1.enabled = false;
+
+                player_mov.player_is_active = false;
 
                 // Game over condition met
                 scoreText.enabled = false;

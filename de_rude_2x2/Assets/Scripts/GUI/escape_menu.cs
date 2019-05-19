@@ -16,6 +16,7 @@ public class escape_menu : MonoBehaviour
     public Dropdown teleport_dropdown;
     private GameObject current_menu;
     private Transform[] spawn_positions;
+    private MovementRB player_mov;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class escape_menu : MonoBehaviour
         teleport_menu.SetActive(false);
         current_menu = main_menu;
         spawn_positions = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
+        player_mov = GameObject.Find("Player").GetComponentInChildren<MovementRB>();
         teleport_dropdown = teleport_menu.GetComponentInChildren<Dropdown>();
         set_spawns_dropdown();
     }
@@ -45,6 +47,9 @@ public class escape_menu : MonoBehaviour
 
     void open_escape_menu()
     {
+        player_mov.player_is_active = false;
+        Cursor.visible = true;
+
         crosshair.SetActive(false);
 
         old_time = Time.timeScale;
@@ -59,6 +64,9 @@ public class escape_menu : MonoBehaviour
 
     public void close_escape_menu()
     {
+        player_mov.player_is_active = true;
+        Cursor.visible = false;
+
         crosshair.SetActive(true);
 
         // close canvases
@@ -118,4 +126,8 @@ public class escape_menu : MonoBehaviour
             , spawn_positions[index].rotation);
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
