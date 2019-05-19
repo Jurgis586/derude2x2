@@ -8,6 +8,7 @@ public class labyrinth_boss : MonoBehaviour
     public int stage_2_threshold = 30;
 
     public Transform eye_dome;
+    public Transform teleporter;
 
     public Transform boss_eye;
     public float eye_laser_cooldown;
@@ -40,11 +41,17 @@ public class labyrinth_boss : MonoBehaviour
         enemies = new GameObject[max_enemy_count];
         turrets = GetComponentsInChildren<turret_script>();
         next_enemy_spawn = 0;
-        Cursor.lockState = CursorLockMode.Locked;
     }
     public void activate()
     {
         stage = 1;
+        teleporter.gameObject.SetActive(false);
+    }
+
+    public void die()
+    {
+        gameObject.SetActive(false);
+        teleporter.gameObject.SetActive(true);
     }
 
     void rand_spawn()
@@ -139,7 +146,7 @@ public class labyrinth_boss : MonoBehaviour
 
             if (!boss_eye.GetComponentInChildren<Enemy>().alive)
             {
-                gameObject.SetActive(false);
+                die();
             }
         }
     }

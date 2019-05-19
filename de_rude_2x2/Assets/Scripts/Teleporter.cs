@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    public GameObject player;
+    public CapsuleCollider player;
     public GameObject location;
+
+    void Start()
+    {
+        player = GameObject.Find("Player").GetComponentInChildren<CapsuleCollider>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        player.transform.position = location.transform.position;
+        if(collision.transform.tag == "Player")
+            player.transform.position = location.transform.position;
     }
 }

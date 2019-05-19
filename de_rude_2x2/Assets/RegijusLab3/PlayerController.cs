@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public MovementRB player_mov;
     private float speed_duration = 0;
     public bool teleport_on_start = true;
+    public bool lock_cursor = false;
 
     // Score
     public Text scoreText;
@@ -37,6 +38,11 @@ public class PlayerController : MonoBehaviour
     public GameObject mainMenuButton;
 
     void Start() {
+        if (lock_cursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         player_mov = player.GetComponentInChildren<MovementRB>();
         Time.timeScale = 1;
         lives = 3;

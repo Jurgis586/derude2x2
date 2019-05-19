@@ -17,7 +17,7 @@ abstract public class Gun : MonoBehaviour
     public GameObject projectile;
     public bool unlocked = true;
     public Transform projectile_spawn_point;
-    protected bool can_shoot = true;
+    public bool can_shoot = true;
     protected LayerMask mask = -1029;
     abstract public void Shoot();
     abstract public void Reload();

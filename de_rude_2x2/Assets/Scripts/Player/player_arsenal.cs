@@ -87,11 +87,15 @@ public class player_arsenal : MonoBehaviour
         if(curr_gun_script != null)
             curr_gun_script.Hide_Gun();
 
-        //select new gun and show it
-        curr_gun_obj = guns[gun_index];
-        curr_gun_script = curr_gun_obj.GetComponent<Gun>();
-        curr_gun_obj.transform.position = player_gun_pos.position;
-        curr_gun_script.Show_Gun();
+        if(curr_gun_obj != guns[gun_index])
+            {
+            //select new gun and show it
+            next_fire_time = Time.time + 1;
+            curr_gun_obj = guns[gun_index];
+            curr_gun_script = curr_gun_obj.GetComponent<Gun>();
+            curr_gun_obj.transform.position = player_gun_pos.position;
+            curr_gun_script.Show_Gun();
+        }
     }
 
     void LateUpdate()
@@ -116,7 +120,7 @@ public class player_arsenal : MonoBehaviour
             }
             else
             {
-                curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
+                //curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
                 curr_gun_script.Shoot();
             }
         }
