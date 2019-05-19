@@ -28,7 +28,7 @@ public class Pistol : Gun
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 
-                bullet.GetComponent<bullet2>().init(damage);
+                bullet.GetComponent<bullet2>().init(damage, projectile_speed);
 
                 current_clip--;
 
