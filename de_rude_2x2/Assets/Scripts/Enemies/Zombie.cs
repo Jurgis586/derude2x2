@@ -26,13 +26,8 @@ public class Zombie : Enemy
 
     void Update()
     {
-        if (alive)
-        {
-            if (agent.enabled)
-            {
-                agent.SetDestination(player_collider.transform.position);
-            }
-        }
+        if (alive && agent.enabled)
+            agent.SetDestination(player_collider.transform.position);
     }
 
     public override void receive_damage(float damage, string type = "flat")
@@ -54,10 +49,16 @@ public class Zombie : Enemy
                 hp -= damage;
                 break;
         }
-        if (hp <= 0)
+
+        if (hp <= 0 && alive)
+        {
+            player_collider.GetComponent<PlayerController>().changeScore(score);
             die();
-        else
+        }
+        else if (alive)
+        {
             damageSound.Play();
+        }
     }
 
     public override void die()
@@ -65,7 +66,6 @@ public class Zombie : Enemy
         alive = false;
         rb.velocity = agent.velocity;
         agent.enabled = false;
-        player_collider.GetComponent<PlayerController>().changeScore(1000);
         deathSound.Play();
         StartCoroutine(remove());
     }
