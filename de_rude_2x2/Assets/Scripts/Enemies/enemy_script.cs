@@ -12,6 +12,8 @@ public class enemy_script : Enemy
     private Rigidbody rb;
     private Gun gun_script;
     private float next_fire_time = 0;
+    public float time_after_death = 2;
+    private float destroy_time = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +48,16 @@ public class enemy_script : Enemy
                 }
             }
         }
+        else if (Time.time > destroy_time)
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     public override void receive_damage(float damage, string type = "flat")
     {
-        Debug.Log("received_damage");
+        //Debug.Log("received_damage");
         switch (type)
         {
             // percent from current hp
@@ -77,5 +84,6 @@ public class enemy_script : Enemy
         alive = false;
         rb.velocity = agent.velocity;
         agent.enabled = false;
+        destroy_time = Time.time + time_after_death;
     }
 }

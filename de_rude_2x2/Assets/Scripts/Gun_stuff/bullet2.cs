@@ -7,25 +7,25 @@ public class bullet2 : MonoBehaviour
     public float speed = 10;
     private int layerMask;
     private Rigidbody rb;
-    private Vector3 offset;
     private float raycast_range;
     private float range_left = 1000;
     private float damage = 1;
+    private Vector3 previousPosition;
     
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0, 0, transform.localScale.z/2);
         rb = GetComponent<Rigidbody>();
+        previousPosition = transform.position;
     }
 
     public void init(float damage, float speed, int layerMask = 2)
     {
         this.damage = damage;
         this.speed = speed;
-        this.layerMask = 1 << layerMask; // = "ignore raycast" layer
-        this.layerMask = ~this.layerMask; // raycast against everything BUT that layer
-
+        /*this.layerMask = 1 << layerMask; // = "ignore raycast" layer
+        this.layerMask = ~this.layerMask; // raycast against everything BUT that layer*/
+        this.layerMask = layerMask;
     }
 
     // Update is called once per frame
@@ -40,7 +40,8 @@ public class bullet2 : MonoBehaviour
             rb.velocity = transform.forward * speed;
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
+            //if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
+            if (Physics.Raycast(previousPosition, (transform.position - previousPosition), out hit, Vector3.Distance(transform.position, previousPosition)*1.2f, layerMask))
             {
                 Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 10);
                 //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
@@ -59,7 +60,7 @@ public class bullet2 : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("tag: " + hit.transform.tag);
+                    //Debug.Log("tag: " + hit.transform.tag);
                 }
                 Destroy(gameObject);
             }

@@ -18,12 +18,23 @@ abstract public class Gun : MonoBehaviour
     public bool unlocked = true;
     public Transform projectile_spawn_point;
     protected bool can_shoot = true;
-
+    protected LayerMask mask = -1029;
     abstract public void Shoot();
     abstract public void Reload();
 
+
     public void Hide_Gun()
     {
+        // if the gun belongs to layer, give a mask that hits enemies
+        if(transform.tag == "Player_gun")
+        {
+            mask = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Ignore Raycast")); // ignore both layerX and layerY
+        }
+        else
+        {
+            mask = ~(1 << LayerMask.NameToLayer("Enemy") | 1 << LayerMask.NameToLayer("Ignore Raycast")); // ignore both layerX and layerY
+        }
+
         MeshRenderer renderer = GetComponentInChildren<MeshRenderer>(true);
         renderer.enabled = false;
     }

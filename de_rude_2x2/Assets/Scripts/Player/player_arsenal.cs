@@ -107,14 +107,13 @@ public class player_arsenal : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 3000f, layerMask))
             {
                 //Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.point, Color.green, 2f);
-                curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
+                //curr_gun_script.projectile_spawn_point.transform.LookAt(hit.point);
 
                 // gun.shoot
                 curr_gun_script.Shoot();
             }
             else
             {
-                Debug.DrawRay(cam.transform.position, cam.transform.forward * 3000, Color.red, 2f);
                 curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
                 curr_gun_script.Shoot();
             }

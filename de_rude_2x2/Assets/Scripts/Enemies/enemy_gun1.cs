@@ -25,7 +25,7 @@ public class enemy_gun1 : Gun
 
         bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 
-        bullet.GetComponent<bullet2>().init(damage, projectile_speed);
+        bullet.GetComponent<bullet2>().init(damage, projectile_speed, mask);
     }
 
     public override void Reload()
