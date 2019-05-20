@@ -10,6 +10,7 @@ public class Zombie : Enemy
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
     private Rigidbody rb;
+    private Animator anim;
 
     // For audio
     public AudioSource damageSound;
@@ -22,6 +23,7 @@ public class Zombie : Enemy
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = move_speed;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -67,12 +69,14 @@ public class Zombie : Enemy
         rb.velocity = agent.velocity;
         agent.enabled = false;
         deathSound.Play();
+        anim.Play("fallingback");
+        transform.gameObject.tag = "Untagged";
         StartCoroutine(remove());
     }
 
     IEnumerator remove()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
