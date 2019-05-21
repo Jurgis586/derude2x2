@@ -9,7 +9,7 @@ public class bullet2 : MonoBehaviour
     private Rigidbody rb;
     private float raycast_range;
     private float range_left = 1000;
-    private float damage = 1;
+    public float damage = 1;
     private Vector3 previousPosition;
     
     // Start is called before the first frame update

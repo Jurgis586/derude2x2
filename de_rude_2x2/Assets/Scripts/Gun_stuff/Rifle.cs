@@ -32,7 +32,9 @@ public class Rifle : Gun
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 
-                bullet.GetComponent<bullet2>().init(damage, projectile_speed, mask);
+                float rand_dmg = Random.Range(damage / 2, damage);
+
+                bullet.GetComponent<bullet2>().init(rand_dmg, projectile_speed, mask);
 
                 current_clip--;
             }
