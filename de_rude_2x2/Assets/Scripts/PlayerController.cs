@@ -26,11 +26,10 @@ public class PlayerController : MonoBehaviour
     public GameObject Temple;
     public GameObject Sea;
 
-    // Lives
-    public int lives;
-    public Image heart1;
-    public Image heart2;
-    public Image heart3;
+    // Health
+    public float max_health;
+    public float health;
+    public Image healthBar;
 
     // Game Over
     public Text gameOverText;
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         player_mov = player.GetComponentInChildren<MovementRB>();
         Time.timeScale = 1;
-        lives = 3;
+        health = max_health;
         score = 0;
         setScoreText();
 
@@ -87,15 +86,19 @@ public class PlayerController : MonoBehaviour
         setScoreText();
     }
 
-    // Increase life by one
-    public void increaseLife() {
-        lives++;
-        checkIsPlayerAlive();
-    }
-
-    // Decreases life by one
-    public void decreaseLife() {
-        lives--;
+    // Changes health by amount specified
+    public void changeHealthBy(float amount)
+    {
+        if (health + amount >= max_health)
+        {
+            health = max_health;
+            healthBar.fillAmount = 1f;
+        }
+        else
+        {
+            health += amount;
+            healthBar.fillAmount = (health / max_health);
+        }
         checkIsPlayerAlive();
     }
 
@@ -119,45 +122,23 @@ public class PlayerController : MonoBehaviour
 
     // Checks if player is still alive
     void checkIsPlayerAlive() {
-        switch(lives) {
-            case 3:
-                heart3.enabled = true;
-                heart2.enabled = true;
-                heart1.enabled = true;
-                break;
-            case 2:
-                heart3.enabled = false;
-                heart2.enabled = true;
-                heart1.enabled = true;
-                break;
-            case 1:
-                heart3.enabled = false;
-                heart2.enabled = false;
-                heart1.enabled = true;
-                break;
-            case 0:
-                heart3.enabled = false;
-                heart2.enabled = false;
-                heart1.enabled = false;
 
-                player_mov.player_is_active = false;
-
-                // Game over condition met
-                scoreText.enabled = false;
-                gameOverText.text = "GAME OVER";
-                finalScore.text = "Score: " + score.ToString();
-                mainMenuButton.SetActive(true);
-                saveScore(); // saving high score
-                crosshair.SetActive(false);
-                Time.timeScale = 0; // this will freeze the game
-                break;
+        if (health <= 0)
+        {
+            player_mov.player_is_active = false;
+            scoreText.enabled = false;
+            gameOverText.text = "GAME OVER";
+            finalScore.text = "Score: " + score.ToString();
+            mainMenuButton.SetActive(true);
+            saveScore(); // saving high score
+            crosshair.SetActive(false);
+            Time.timeScale = 0; // this will freeze the game
         }
     }
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Enemy")) {
-            decreaseLife();
-            changeScore(-50);
+            changeHealthBy((max_health / 10) * -1);
         }
 
         if (collision.gameObject.CompareTag("Score")) {
@@ -165,9 +146,8 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Health") && lives != 3) {
-            increaseLife();
-            changeScore(100);
+        if (collision.gameObject.CompareTag("Health") && health != max_health) {
+            changeHealthBy(max_health);
             Destroy(collision.gameObject);
         }
     }
@@ -183,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
             case "health":
                 for (int i = 0; i < value; i++)
-                    increaseLife();
+                    changeHealthBy(max_health);
                 break;
 
             case "ammo":

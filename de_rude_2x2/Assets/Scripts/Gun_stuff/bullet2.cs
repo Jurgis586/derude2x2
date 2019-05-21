@@ -56,7 +56,7 @@ public class bullet2 : MonoBehaviour
                 }
                 else if(hit.transform.tag == "Player")
                 {
-                    hit.transform.GetComponentInChildren<PlayerController>().decreaseLife();
+                    hit.transform.GetComponentInChildren<PlayerController>().changeHealthBy(hit.transform.GetComponentInChildren<PlayerController>().max_health / 10);
                 }
                 else
                 {

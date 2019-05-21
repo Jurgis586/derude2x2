@@ -134,7 +134,7 @@ public class labyrinth_boss : MonoBehaviour
                 line.SetPosition(1, new Vector3(hit.point.x, hit.point.y - 1, hit.point.z));
                 if(hit.collider.tag == "Player")
                 {
-                    hit.transform.GetComponentInChildren<PlayerController>().decreaseLife();
+                    hit.transform.GetComponentInChildren<PlayerController>().changeHealthBy(hit.transform.GetComponentInChildren<PlayerController>().max_health / 10);
                     next_eye_laser_time = Time.time + eye_laser_cooldown;
                     line.enabled = false;
                 }
