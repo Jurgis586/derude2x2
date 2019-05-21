@@ -10,6 +10,7 @@ public class Skeleton : Enemy
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
     private Rigidbody rb;
+    private Animator anim;
 
     // For audio
     public AudioSource damageSound;
@@ -22,17 +23,13 @@ public class Skeleton : Enemy
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = move_speed;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (alive)
-        {
-            if (agent.enabled)
-            {
-                agent.SetDestination(player_collider.transform.position);
-            }
-        }
+        if (alive && agent.enabled)
+            agent.SetDestination(player_collider.transform.position);
     }
 
     public override void receive_damage(float damage, string type = "flat")
@@ -54,10 +51,17 @@ public class Skeleton : Enemy
                 hp -= damage;
                 break;
         }
-        if (hp <= 0)
+
+        if (hp <= 0 && alive)
+        {
+            player_collider.GetComponent<PlayerController>().changeScore(score);
             die();
-        else
+        }
+        else if (alive)
+        {
             damageSound.Play();
+            anim.Play("Skeleton@Damage");
+        }
     }
 
     public override void die()
@@ -65,14 +69,15 @@ public class Skeleton : Enemy
         alive = false;
         rb.velocity = agent.velocity;
         agent.enabled = false;
-        player_collider.GetComponent<PlayerController>().changeScore(1000);
         deathSound.Play();
+        anim.Play("Skeleton@Death");
+        transform.gameObject.tag = "Untagged";
         StartCoroutine(remove());
     }
 
     IEnumerator remove()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
