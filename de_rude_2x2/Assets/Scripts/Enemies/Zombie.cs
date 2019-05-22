@@ -11,6 +11,7 @@ public class Zombie : Enemy
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
     private Rigidbody rb;
     private Animator anim;
+    public bool attacking;
 
     // For audio
     public AudioSource damageSound;
@@ -24,12 +25,32 @@ public class Zombie : Enemy
         agent.speed = move_speed;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
         anim = GetComponent<Animator>();
+        if (attacking)
+        {
+            anim.Play("walk");
+        }
     }
 
     void Update()
     {
-        if (alive && agent.enabled)
+        if (alive && agent.enabled && attacking)
+        {
             agent.SetDestination(player_collider.transform.position);
+        }
+    }
+
+    public void makeAttacking(bool type)
+    {
+        if (type)
+        {
+            attacking = true;
+            anim.Play("walk");
+        }
+        else
+        {
+            attacking = false;
+            anim.Play("idle");
+        }
     }
 
     public override void receive_damage(float damage, string type = "flat")

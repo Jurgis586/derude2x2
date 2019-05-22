@@ -27,6 +27,7 @@ public class ArenaZombie : Enemy
         agent.speed = move_speed;
         player_collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CapsuleCollider>().transform;
         anim = GetComponent<Animator>();
+        anim.Play("walk");
     }
 
     void Update()

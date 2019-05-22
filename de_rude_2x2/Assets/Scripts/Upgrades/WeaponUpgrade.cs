@@ -11,14 +11,19 @@ public class WeaponUpgrade : MonoBehaviour
     public int current_ammo;
 
     public GameObject infoPanel;
+    public string text;
 
     private void OnTriggerEnter(Collider other)
     {
-        weapon.GetComponent<Gun>().damage = damage;
-        weapon.GetComponent<Gun>().max_clip = max_clip;
-        weapon.GetComponent<Gun>().current_clip = max_clip;
-        weapon.GetComponent<Gun>().current_ammo = current_ammo;
-        infoPanel.GetComponent<InfoPanel>().setInfoText("You've picked up a pistol upgrade!");
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            weapon.GetComponent<Gun>().damage = damage;
+            weapon.GetComponent<Gun>().max_clip = max_clip;
+            weapon.GetComponent<Gun>().current_clip = max_clip;
+            weapon.GetComponent<Gun>().current_ammo = current_ammo;
+            infoPanel.GetComponent<InfoPanel>().setInfoText(text);
+            other.GetComponentInChildren<AudioSource>().Play();
+            Destroy(gameObject);
+        }
     }
 }

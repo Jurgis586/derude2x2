@@ -2498,6 +2498,7 @@ MonoBehaviour:
   move_speed: 5
   alive: 1
   score: 50
+  attacking: 1
   damageSound: {fileID: 1124268979}
   deathSound: {fileID: 1855398332}
 --- !u!195 &2119304854

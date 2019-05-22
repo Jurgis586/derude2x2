@@ -9,8 +9,18 @@ public class WeaponUnlock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        weapon.GetComponent<Gun>().unlocked = true;
-        infoPanel.GetComponent<InfoPanel>().setInfoText("You've unlocked a space gun!");
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            weapon.GetComponent<Gun>().unlocked = true;
+            infoPanel.GetComponent<InfoPanel>().setInfoText("You've unlocked a space gun!");
+            other.GetComponentInChildren<AudioSource>().Play();
+            StartCoroutine(cooldown());
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator cooldown()
+    {
+        yield return new WaitForSeconds(3);
     }
 }

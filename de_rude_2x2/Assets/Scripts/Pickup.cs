@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     public Vector3 direction = new Vector3(0, 1, 0);
     public float value;
     public string type;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +20,7 @@ public class Pickup : MonoBehaviour
         {
             Debug.Log("player pickup");
             other.GetComponentInChildren<PlayerController>().apply_effect(type, value);
+            other.GetComponentInChildren<AudioSource>().Play();
             Destroy(gameObject);
         }
     }
