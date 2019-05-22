@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
             mainMenuButton.SetActive(true);
             saveScore(); // saving high score
             crosshair.SetActive(false);
+            Cursor.visible = false;
             Time.timeScale = 0; // this will freeze the game
         }
     }

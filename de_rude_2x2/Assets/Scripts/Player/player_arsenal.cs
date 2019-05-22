@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class player_arsenal : MonoBehaviour
 {
@@ -15,10 +16,18 @@ public class player_arsenal : MonoBehaviour
     private Gun curr_gun_script;
     private int gun_index;
 
+    private Text text_clip;
+    private Text text_ammo;
+
     private MovementRB player_mov;
     // Start is called before the first frame update
     void Start()
     {
+        text_clip = GameObject.Find("ammo_in_clip").GetComponent<Text>();
+        text_ammo = GameObject.Find("all_ammo").GetComponent<Text>();
+        text_clip.text = "-";
+        text_ammo.text = "-";
+
         player_gun_pos = GameObject.Find("Gun_position").GetComponent<Transform>();
         cam = transform.parent.GetComponentInChildren<Camera>();
 
@@ -39,6 +48,7 @@ public class player_arsenal : MonoBehaviour
         default_gun_rot = curr_gun_script.projectile_spawn_point.localRotation;
 
         player_mov = GameObject.Find("Player").GetComponentInChildren<MovementRB>();
+        Update_UI();
     }
 
     void Update()
@@ -100,13 +110,25 @@ public class player_arsenal : MonoBehaviour
             curr_gun_script = curr_gun_obj.GetComponent<Gun>();
             curr_gun_obj.transform.position = player_gun_pos.position;
             curr_gun_script.Show_Gun();
+            Update_UI();
         }
+    }
+
+    public void Update_UI()
+    {
+        text_clip.text = curr_gun_script.current_clip.ToString();
+        text_ammo.text = curr_gun_script.current_ammo.ToString();
     }
 
     void LateUpdate()
     {
         if (player_mov.player_is_active)
         {
+            if (Input.GetButton("Reload"))
+            {
+                curr_gun_script.Reload();
+                Update_UI();
+            }
             curr_gun_obj.transform.SetPositionAndRotation(player_gun_pos.position, player_gun_pos.rotation);
             if (Input.GetButton("Fire1") && Time.time > next_fire_time)
             {
@@ -130,6 +152,7 @@ public class player_arsenal : MonoBehaviour
                     //curr_gun_script.projectile_spawn_point.localRotation = default_gun_rot;
                     curr_gun_script.Shoot();
                 }
+                Update_UI();
             }
         }
     }

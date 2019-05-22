@@ -45,11 +45,19 @@ public class Rifle : Gun
 
     public override void Reload()
     {
-        can_shoot = false;
         StartCoroutine(Reload_coroutine());
+    }
+
+    IEnumerator Reload_coroutine()
+    {
+        can_shoot = false;
+
+        player_arsenal PA = GameObject.Find("Player").GetComponentInChildren<player_arsenal>();
+
+        yield return new WaitForSeconds(reload_time);
 
         current_ammo += current_clip;
-        if(current_ammo - max_clip >= 0)
+        if (current_ammo - max_clip >= 0)
         {
             current_clip = max_clip;
         }
@@ -60,10 +68,7 @@ public class Rifle : Gun
         current_ammo -= current_clip;
 
         can_shoot = true;
-    }
 
-    IEnumerator Reload_coroutine()
-    {
-        yield return new WaitForSeconds(reload_time);
+        PA.Update_UI();
     }
 }

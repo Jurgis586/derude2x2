@@ -9,6 +9,7 @@ public class Pistol : Gun
 
     void Start()
     {
+        current_ammo = max_ammo;
         Reload();
     }
 

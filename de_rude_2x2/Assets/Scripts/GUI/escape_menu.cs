@@ -117,6 +117,7 @@ public class escape_menu : MonoBehaviour
     }
     public void teleport_to(int index)
     {
+        index++;
         Debug.Log(spawn_positions[index].position);
 
         Destroy(teleport_dropdown.transform.Find("Dropdown List").gameObject);
