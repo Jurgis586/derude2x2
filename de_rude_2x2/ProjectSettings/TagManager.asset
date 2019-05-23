@@ -10,6 +10,7 @@ TagManager:
   - Score
   - Bullet
   - Player_gun
+  - Knight
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - PostProcessing
   - Player
   - Enemy
-  - 
+  - Knight
   - 
   - 
   - 
