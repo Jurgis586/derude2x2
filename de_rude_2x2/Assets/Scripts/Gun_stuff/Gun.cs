@@ -35,12 +35,14 @@ abstract public class Gun : MonoBehaviour
             mask = ~(1 << LayerMask.NameToLayer("Enemy") | 1 << LayerMask.NameToLayer("Ignore Raycast")); // ignore both layerX and layerY
         }
 
-        MeshRenderer renderer = GetComponentInChildren<MeshRenderer>(true);
-        renderer.enabled = false;
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>(true);
+        foreach (var renderer in renderers)
+            renderer.enabled = false;
     }
     public void Show_Gun()
     {
-        MeshRenderer renderer = GetComponentInChildren<MeshRenderer>(true);
-        renderer.enabled = true;
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>(true);
+        foreach (var renderer in renderers)
+            renderer.enabled = true;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rocket_launcher : Gun
 {
     public float explosion_radius = 3;
+    public float explosion_power = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class Rocket_launcher : Gun
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 
-                bullet.GetComponent<bullet2>().init(damage, projectile_speed, mask);
+                bullet.GetComponent<rocket>().init(damage, projectile_speed, explosion_radius, explosion_power, mask);
 
                 current_clip--;
             }
