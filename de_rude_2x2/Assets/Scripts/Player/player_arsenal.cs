@@ -10,7 +10,6 @@ public class player_arsenal : MonoBehaviour
     private float next_fire_time = 0;
     private Camera cam;
 
-    private Quaternion default_gun_rot;
     private Transform player_gun_pos;
     private GameObject curr_gun_obj;
     private Gun curr_gun_script;
@@ -41,11 +40,13 @@ public class player_arsenal : MonoBehaviour
                     gun_index = i;
                 guns[i].GetComponent<Gun>().Hide_Gun();
             }
-            Select_Gun();
+            if(gun_index >= 0)
+            {
+                Select_Gun();
+            }
         }
         else
             Debug.Log("ERROR: no guns with tag \"Player_gun\" found");
-        default_gun_rot = curr_gun_script.projectile_spawn_point.localRotation;
 
         player_mov = GameObject.Find("Player").GetComponentInChildren<MovementRB>();
         Update_UI();
@@ -116,13 +117,16 @@ public class player_arsenal : MonoBehaviour
 
     public void Update_UI()
     {
-        text_clip.text = curr_gun_script.current_clip.ToString();
-        text_ammo.text = curr_gun_script.current_ammo.ToString();
+        if(curr_gun_script != null)
+        {
+            text_clip.text = curr_gun_script.current_clip.ToString();
+            text_ammo.text = curr_gun_script.current_ammo.ToString();
+        }
     }
 
     void LateUpdate()
     {
-        if (player_mov.player_is_active)
+        if (player_mov.player_is_active && curr_gun_obj != null)
         {
             if (Input.GetButton("Reload"))
             {
