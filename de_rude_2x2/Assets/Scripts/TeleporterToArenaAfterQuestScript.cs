@@ -18,13 +18,11 @@ public class TeleporterToArenaAfterQuestScript : MonoBehaviour
     {
         if (spaceGun.gameObject.GetComponent<SpaceGun>().unlocked)
         {
-            Debug.Log("unlocked");
             if (collision.transform.tag == "Player")
                 player.transform.position = location.transform.position;
         }
         else
         {
-            Debug.Log("locked");
             infoPanel.gameObject.GetComponent<InfoPanel>().setInfoText(@"To enter arena you have to unlock Space Gun.
                 For more information go see Knight of Arena at the entrance.");
         }
