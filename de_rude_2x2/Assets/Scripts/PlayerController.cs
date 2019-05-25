@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Labyrinth;
     public GameObject Temple;
     public GameObject Sea;
+    public GameObject ArenaExit;
 
     // Health
     public float max_health;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public Text gameOverText;
     public Text finalScore;
     public GameObject mainMenuButton;
+    public GameObject respawnButton;
     public GameObject crosshair;
 
     void Start() {
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Saves players' score
-    private void saveScore() {
+    public void saveScore() {
         List<string> scores = PlayerPrefs.GetString("Scores").Split(',').ToList();
 
         int i;
@@ -129,10 +131,11 @@ public class PlayerController : MonoBehaviour
             scoreText.enabled = false;
             gameOverText.text = "GAME OVER";
             finalScore.text = "Score: " + score.ToString();
+            respawnButton.SetActive(true);
             mainMenuButton.SetActive(true);
             saveScore(); // saving high score
             crosshair.SetActive(false);
-            Cursor.visible = false;
+            Cursor.visible = true;
             Time.timeScale = 0; // this will freeze the game
         }
     }
@@ -176,7 +179,37 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void backToMainMenu() {
+    public void backToMainMenu()
+    {
+        saveScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void respawn()
+    {
+        Time.timeScale = 1;
+        changeHealthBy(max_health);
+        changeScore(-1 * score);
+        player_mov.player_is_active = true;
+        scoreText.enabled = true;
+        gameOverText.text = "";
+        finalScore.text = "";
+        mainMenuButton.SetActive(false);
+        respawnButton.SetActive(false);
+        crosshair.SetActive(true);
+        Cursor.visible = false;
+
+        switch (PlayerPrefs.GetString("StartSpawn"))
+        {
+            case "City_Entrance":
+                player.transform.position = City_Entrance.transform.position;
+                break;
+            case "Labyrinth":
+                player.transform.position = Labyrinth.transform.position;
+                break;
+            case "ArenaExit":
+                player.transform.position = ArenaExit.transform.position;
+                break;
+        }
     }
 }
