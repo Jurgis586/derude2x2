@@ -8,7 +8,6 @@ public class turret_script : Enemy
     public float shooting_angle = 10f;
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
-    private Rigidbody rb;
     private Gun gun_script;
     private float next_fire_time = 0;
 

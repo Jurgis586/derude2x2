@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class Skeleton : Enemy
 {
     // For movement
+    public float change_path_period = 1f;
+    private float change_path_time_left = 0f;
     private NavMeshAgent agent;
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
-    private Rigidbody rb;
     private Animator anim;
 
     // For audio
@@ -29,7 +30,17 @@ public class Skeleton : Enemy
     void Update()
     {
         if (alive && agent.enabled)
-            agent.SetDestination(player_collider.transform.position);
+        {
+            if (change_path_time_left < 0)
+            {
+                change_path_time_left = change_path_period;
+                agent.SetDestination(player_collider.transform.position);
+            }
+            else
+            {
+                change_path_time_left -= Time.deltaTime;
+            }
+        }
     }
 
     public override void receive_damage(float damage, string type = "flat")

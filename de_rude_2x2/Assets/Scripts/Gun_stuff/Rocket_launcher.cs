@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Rocket_launcher : Gun
 {
+    private AudioSource audioSource;
+    public AudioClip shoot;
+    public AudioClip reload;
     public float explosion_radius = 3;
     public float explosion_power = 3;
     // Start is called before the first frame update
@@ -11,6 +14,8 @@ public class Rocket_launcher : Gun
     {
         current_ammo = max_ammo;
         Reload();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shoot;
     }
 
     public override void Shoot()
@@ -19,6 +24,8 @@ public class Rocket_launcher : Gun
         {
             if (current_clip > 0)
             {
+                audioSource.clip = shoot;
+                audioSource.Play();
                 var randomNumberX = Random.Range(-accuracy, accuracy);
                 var randomNumberY = Random.Range(-accuracy, accuracy);
                 var randomNumberZ = Random.Range(-accuracy, accuracy);
@@ -41,6 +48,12 @@ public class Rocket_launcher : Gun
 
     public override void Reload()
     {
+        if(audioSource != null)
+        {
+            audioSource.clip = reload;
+            audioSource.Play();
+        }
+
         StartCoroutine(Reload_coroutine());
     }
 

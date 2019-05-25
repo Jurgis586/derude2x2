@@ -16,6 +16,7 @@ public class rocket : MonoBehaviour
     private float range_left = 1000;
     private float damage = 1;
     private Vector3 previousPosition;
+    private bool exploded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,60 +39,72 @@ public class rocket : MonoBehaviour
     {
         if (range_left >= 0)
         {
-            Vector3 pos = transform.position - (transform.forward * transform.localScale.z);
-            raycast_range = 1 + speed * Time.deltaTime * 1.2f;
-            if (raycast_range < 0)
-                raycast_range = 1;
-            rb.velocity = transform.forward * speed;
-            RaycastHit hit;
-            // Does the ray intersect any objects excluding the player layer
-            //if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
-            if (Physics.Raycast(previousPosition, (transform.position - previousPosition), out hit, Vector3.Distance(transform.position, previousPosition) * 1.2f, layerMask))
+            if (!exploded)
             {
-                Debug.DrawRay(previousPosition, (transform.position - previousPosition), Color.yellow, 10);
-                //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
-                Vector3 explosionPos = transform.position;
-                Collider[] colliders = Physics.OverlapSphere(explosionPos, explosion_radius);
-
-
-                foreach (Collider obj in colliders)
+                Vector3 pos = transform.position - (transform.forward * transform.localScale.z);
+                raycast_range = 1 + speed * Time.deltaTime * 1.2f;
+                if (raycast_range < 0)
+                    raycast_range = 1;
+                rb.velocity = transform.forward * speed;
+                RaycastHit hit;
+                // Does the ray intersect any objects excluding the player layer
+                //if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
+                if (Physics.Raycast(previousPosition, (transform.position - previousPosition), out hit, Vector3.Distance(transform.position, previousPosition) * 1.2f, layerMask))
                 {
-                    Rigidbody rb = obj.GetComponentInChildren<Rigidbody>();
+                    Debug.DrawRay(previousPosition, (transform.position - previousPosition), Color.yellow, 10);
+                    //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
+                    Vector3 explosionPos = transform.position;
+                    Collider[] colliders = Physics.OverlapSphere(explosionPos, explosion_radius);
 
-                    if (rb != null && obj.transform.tag != "Enemy")
-                        rb.AddExplosionForce(explosion_power, explosionPos, explosion_radius, 0.1f);
 
-                    if (hit_enemy && obj.transform.tag == "Enemy")
+                    foreach (Collider obj in colliders)
                     {
-                        //obj.GetComponentInChildren<NavMeshAgent>().enabled = false;
-                        Debug.Log("tag: " + obj.transform.tag);
-                        //do damage
-                        Enemy enemy = obj.GetComponentInChildren<Enemy>();
-                        enemy.knockback(explosion_power, explosionPos, explosion_radius, 0.1f, 2f);
-                        if (enemy)
-                            enemy.receive_damage(damage);
+                        Rigidbody rb = obj.GetComponentInChildren<Rigidbody>();
+
+                        if (rb != null && obj.transform.tag != "Enemy")
+                            rb.AddExplosionForce(explosion_power, explosionPos, explosion_radius, 0.1f);
+
+                        if (hit_enemy && obj.transform.tag == "Enemy")
+                        {
+                            //obj.GetComponentInChildren<NavMeshAgent>().enabled = false;
+                            Debug.Log("tag: " + obj.transform.tag);
+                            //do damage
+                            Enemy enemy = obj.GetComponentInChildren<Enemy>();
+                            enemy.knockback(explosion_power, explosionPos, explosion_radius, 0.1f, 2f);
+                            if (enemy)
+                                enemy.receive_damage(damage);
+                            else
+                                Debug.Log("ENEMY NOT FOUND");
+                        }
+                        else if (hit_player && obj.transform.tag == "Player")
+                        {
+                            obj.GetComponentInChildren<PlayerController>().changeHealthBy(-damage / 10f);
+                            Debug.Log("tag: " + obj.transform.tag);
+                        }
                         else
-                            Debug.Log("ENEMY NOT FOUND");
+                        {
+                            Debug.Log("tag: " + obj.transform.tag);
+                        }
                     }
-                    else if (hit_player && obj.transform.tag == "Player")
+                    rb.velocity = Vector3.zero;
+                    foreach (var item in GetComponentsInChildren<MeshRenderer>())
                     {
-                        obj.GetComponentInChildren<PlayerController>().changeHealthBy(-damage/10f);
-                        Debug.Log("tag: " + obj.transform.tag);
+                        item.enabled = false;
                     }
-                    else
-                    {
-                        Debug.Log("tag: " + obj.transform.tag);
-                    }
+                    var exp = GetComponentInChildren<ParticleSystem>();
+                    exp.Play();
+                    GetComponentInChildren<AudioSource>().Play();
+                    Destroy(gameObject, 1);
+                    exploded = true;
+                    //Destroy(gameObject);
                 }
-
-                Destroy(gameObject);
+                else
+                {
+                    Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * raycast_range, Color.white);
+                    //Debug.Log("Did not Hit");
+                }
+                range_left -= (raycast_range - 1);
             }
-            else
-            {
-                Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * raycast_range, Color.white);
-                //Debug.Log("Did not Hit");
-            }
-            range_left -= (raycast_range - 1);
         }
         else
         {

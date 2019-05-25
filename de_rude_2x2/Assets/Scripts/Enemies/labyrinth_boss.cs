@@ -34,7 +34,7 @@ public class labyrinth_boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player_pos = GameObject.Find("Player").GetComponentInChildren<Camera>().transform;
+        player_pos = GameObject.Find("Player").transform;
         boss_eye = gameObject.GetComponentInChildren<MeshCollider>().transform.parent;
         line = boss_eye.GetComponentInChildren<LineRenderer>();
         spawn_points = GameObject.Find("lab_enemy_spawns").GetComponentsInChildren<Transform>();

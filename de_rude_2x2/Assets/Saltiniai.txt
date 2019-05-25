@@ -61,8 +61,8 @@ TexturesCom_Brick_Medieval_1K_albedo.tif from https://www.textures.com/download/
 TexturesCom_CastleGate_1K_albedo.tif from https://www.textures.com/download/pbr0267/133941?q=gate
 NavMeshComponents from https://github.com/Unity-Technologies/NavMeshComponents by Unity-Technologies
 M72 LAW 3d Model from https://free3d.com/3d-model/m72-law-26344.html by azlyirnizam
- from  by 
- from  by 
+rocket_reload.wav from https://freesound.org/people/ken788/sounds/386777/ by ken788
+276956__gfl7__awp-reload-sound from https://freesound.org/people/GFL7/sounds/276956/ by GFL7
  from  by 
  from  by 
  from  by 
