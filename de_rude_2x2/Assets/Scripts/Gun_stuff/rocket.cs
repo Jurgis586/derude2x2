@@ -56,15 +56,16 @@ public class rocket : MonoBehaviour
                     Vector3 explosionPos = transform.position;
                     Collider[] colliders = Physics.OverlapSphere(explosionPos, explosion_radius);
 
+                    List<string> enemyTypes = new List<string>() { "Enemy", "EnemyToClone" };
 
                     foreach (Collider obj in colliders)
                     {
                         Rigidbody rb = obj.GetComponentInChildren<Rigidbody>();
 
-                        if (rb != null && obj.transform.tag != "Enemy")
+                        if (rb != null && !enemyTypes.Contains(obj.transform.tag))
                             rb.AddExplosionForce(explosion_power, explosionPos, explosion_radius, 0.1f);
 
-                        if (hit_enemy && obj.transform.tag == "Enemy")
+                        if (hit_enemy && enemyTypes.Contains(obj.transform.tag))
                         {
                             //obj.GetComponentInChildren<NavMeshAgent>().enabled = false;
                             Debug.Log("tag: " + obj.transform.tag);
@@ -76,7 +77,7 @@ public class rocket : MonoBehaviour
                             else
                                 Debug.Log("ENEMY NOT FOUND");
                         }
-                        else if (hit_player && obj.transform.tag == "Player")
+                        else if (hit_player && enemyTypes.Contains(obj.transform.tag))
                         {
                             obj.GetComponentInChildren<PlayerController>().changeHealthBy(-damage / 10f);
                             Debug.Log("tag: " + obj.transform.tag);

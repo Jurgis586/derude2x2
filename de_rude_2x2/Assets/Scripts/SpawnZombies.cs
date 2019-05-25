@@ -10,6 +10,7 @@ public class SpawnZombies : MonoBehaviour
 
     public GameObject objectToSpawn;
     public float spawnTime;
+    public int maxZombiesCount;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,11 @@ public class SpawnZombies : MonoBehaviour
 
     private void SpawnZombie()
     {
-        Instantiate(objectToSpawn, location1.transform.position, Quaternion.identity);
-        Instantiate(objectToSpawn, location2.transform.position, Quaternion.identity);
+        int currentZombieCount = GameObject.FindGameObjectsWithTag("EnemyToClone").Length;
+        if (currentZombieCount < maxZombiesCount)
+        {
+            Instantiate(objectToSpawn, location1.transform.position, Quaternion.identity);
+            Instantiate(objectToSpawn, location2.transform.position, Quaternion.identity);
+        }
     }
 }
