@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class enemy_script : Enemy
 {
     public float shooting_angle = 10f;
+    public float change_path_period = 1f;
+    private float change_path_time_left = 0f;
     private NavMeshAgent agent;
     private Transform player_collider;
     private Vector3 m_EulerAngleVelocity = new Vector3(0, 100, 0);
-    private Rigidbody rb;
     private Gun gun_script;
     private float next_fire_time = 0;
     public float time_after_death = 2;
@@ -35,8 +36,16 @@ public class enemy_script : Enemy
             //get_damage(0.5f);
             if (agent.enabled)
             {
-                agent.SetDestination(player_collider.transform.position);
-                Debug.DrawRay(player_collider.transform.position, Vector3.up * 2000, Color.magenta);
+                if(change_path_time_left < 0f)
+                {
+                    change_path_time_left = change_path_period;
+                    Debug.DrawRay(player_collider.transform.position, Vector3.up * 2000, Color.magenta, 1f);
+                    agent.SetDestination(player_collider.transform.position);
+                }
+                else
+                {
+                    change_path_time_left -= Time.deltaTime;
+                }
 
                 Vector3 dir = player_collider.transform.position - transform.position;
                 float angle = Vector3.Angle(dir, transform.forward);
@@ -47,12 +56,18 @@ public class enemy_script : Enemy
                     gun_script.Shoot();
                 }
             }
+            else
+            {
+                agent.velocity = rb.velocity * 0.9f;
+                enable_agent_in -= Time.deltaTime;
+                if (enable_agent_in < 0)
+                    agent.enabled = true;
+            }
         }
         else if (Time.time > destroy_time)
         {
             Destroy(gameObject);
         }
-        
     }
 
     public override void receive_damage(float damage, string type = "flat")
@@ -82,6 +97,7 @@ public class enemy_script : Enemy
     public override void die()
     {
         alive = false;
+        rb.freezeRotation = false;
         rb.velocity = agent.velocity;
         agent.enabled = false;
         destroy_time = Time.time + time_after_death;

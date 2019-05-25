@@ -60,7 +60,7 @@ TexturesCom_Brick_Rustic_1K_albedo.tif from https://www.textures.com/download/pb
 TexturesCom_Brick_Medieval_1K_albedo.tif from https://www.textures.com/download/pbr0071/133106
 TexturesCom_CastleGate_1K_albedo.tif from https://www.textures.com/download/pbr0267/133941?q=gate
 NavMeshComponents from https://github.com/Unity-Technologies/NavMeshComponents by Unity-Technologies
- from  by 
+M72 LAW 3d Model from https://free3d.com/3d-model/m72-law-26344.html by azlyirnizam
  from  by 
  from  by 
  from  by 

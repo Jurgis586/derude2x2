@@ -8,6 +8,8 @@ public class rocket : MonoBehaviour
     public float explosion_power = 10.0F;
     public float explosion_radius = 3;
     public float speed = 10;
+    private bool hit_player = true;
+    private bool hit_enemy = true;
     private int layerMask;
     private Rigidbody rb;
     private float raycast_range;
@@ -51,40 +53,35 @@ public class rocket : MonoBehaviour
                 Vector3 explosionPos = transform.position;
                 Collider[] colliders = Physics.OverlapSphere(explosionPos, explosion_radius);
 
-                /*var mySphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                mySphere.transform.localScale = new Vector3(explosion_radius, explosion_radius, explosion_radius);
-                mySphere.transform.position = explosionPos;*/
 
                 foreach (Collider obj in colliders)
                 {
-
-
                     Rigidbody rb = obj.GetComponentInChildren<Rigidbody>();
 
-                    if (rb != null)
-                        rb.AddExplosionForce(explosion_power, explosionPos, explosion_radius, 3.0F);
+                    if (rb != null && obj.transform.tag != "Enemy")
+                        rb.AddExplosionForce(explosion_power, explosionPos, explosion_radius, 0.1f);
 
-                    if (obj.transform.tag == "Enemy")
+                    if (hit_enemy && obj.transform.tag == "Enemy")
                     {
-                        obj.GetComponentInChildren<NavMeshAgent>().enabled = false;
-                        Debug.Log("tag: " + hit.transform.tag);
+                        //obj.GetComponentInChildren<NavMeshAgent>().enabled = false;
+                        Debug.Log("tag: " + obj.transform.tag);
                         //do damage
                         Enemy enemy = obj.GetComponentInChildren<Enemy>();
+                        enemy.knockback(explosion_power, explosionPos, explosion_radius, 0.1f, 2f);
                         if (enemy)
                             enemy.receive_damage(damage);
                         else
                             Debug.Log("ENEMY NOT FOUND");
                     }
-                    else if (obj.transform.tag == "Player")
+                    else if (hit_player && obj.transform.tag == "Player")
                     {
                         obj.GetComponentInChildren<PlayerController>().changeHealthBy(-damage/10f);
-                        Debug.Log("tag: " + hit.transform.tag);
+                        Debug.Log("tag: " + obj.transform.tag);
                     }
                     else
                     {
-                        Debug.Log("tag: " + hit.transform.tag);
+                        Debug.Log("tag: " + obj.transform.tag);
                     }
-
                 }
 
                 Destroy(gameObject);

@@ -65,13 +65,13 @@ public class MovementRB : MonoBehaviour
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = rb.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, 2 * maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, 2 * maxVelocityChange);
+            /*velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, 2 * maxVelocityChange);
+            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, 2 * maxVelocityChange);*/
             velocityChange.y = 0;
             if (_isGrounded)
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             else
-                rb.AddForce(velocityChange / 2, ForceMode.VelocityChange);
+                rb.AddForce(velocityChange * 0.2f, ForceMode.VelocityChange);
 
             // Jump
             if (_isGrounded && Input.GetButton("Jump"))
