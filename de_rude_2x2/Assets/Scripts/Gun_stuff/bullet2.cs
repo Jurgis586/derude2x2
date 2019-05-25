@@ -39,13 +39,15 @@ public class bullet2 : MonoBehaviour
                 raycast_range = 1;
             rb.velocity = transform.forward * speed;
             RaycastHit hit;
+            List<string> enemyTypes = new List<string>() { "Enemy", "EnemyToClone" };
+
             // Does the ray intersect any objects excluding the player layer
             //if (Physics.Raycast(pos, transform.forward, out hit, raycast_range * 1.2f, layerMask))
             if (Physics.Raycast(previousPosition, (transform.position - previousPosition), out hit, Vector3.Distance(transform.position, previousPosition)*1.2f, layerMask))
             {
                 Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 10);
                 //Debug.Log("Did Hit: " + hit.transform.tag + " range: " + raycast_range + " start: " + pos);
-                if(hit.transform.tag == "Enemy")
+                if(enemyTypes.Contains(hit.transform.tag))
                 {
                     //do damage
                     Enemy enemy = hit.collider.GetComponentInChildren<Enemy>();
