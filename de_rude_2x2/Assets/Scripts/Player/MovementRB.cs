@@ -71,7 +71,7 @@ public class MovementRB : MonoBehaviour
             if (_isGrounded)
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             else
-                rb.AddForce(velocityChange * 0.2f, ForceMode.VelocityChange);
+                rb.AddForce(velocityChange * 0.4f, ForceMode.VelocityChange);
 
             // Jump
             if (_isGrounded && Input.GetButton("Jump"))

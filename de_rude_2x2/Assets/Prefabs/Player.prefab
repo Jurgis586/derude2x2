@@ -194,7 +194,7 @@ MonoBehaviour:
   maxVelocityChange: 20
   canJump: 1
   jumpHeight: 15
-  GroundDistance: 0.05
+  GroundDistance: 0.3
   airdrag: 0.4
   normaldrag: 0
   sprintSpeedMult: 2
@@ -220,12 +220,14 @@ MonoBehaviour:
   Labyrinth: {fileID: 0}
   Temple: {fileID: 0}
   Sea: {fileID: 0}
+  ArenaExit: {fileID: 0}
   max_health: 0
   health: 0
   healthBar: {fileID: 0}
   gameOverText: {fileID: 0}
   finalScore: {fileID: 0}
   mainMenuButton: {fileID: 0}
+  respawnButton: {fileID: 0}
   crosshair: {fileID: 0}
 --- !u!114 &6530472766314553678
 MonoBehaviour:
