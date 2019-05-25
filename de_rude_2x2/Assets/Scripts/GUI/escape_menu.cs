@@ -17,6 +17,7 @@ public class escape_menu : MonoBehaviour
     private GameObject current_menu;
     private Transform[] spawn_positions;
     private MovementRB player_mov;
+    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class escape_menu : MonoBehaviour
         spawn_positions = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
         player_mov = GameObject.Find("Player").GetComponentInChildren<MovementRB>();
         teleport_dropdown = teleport_menu.GetComponentInChildren<Dropdown>();
+        player = GameObject.Find("Player").GetComponentInChildren<PlayerController>();
         set_spawns_dropdown();
     }
 
@@ -129,6 +131,7 @@ public class escape_menu : MonoBehaviour
 
     public void Quit()
     {
+        player.saveScore();
         Application.Quit();
     }
 }

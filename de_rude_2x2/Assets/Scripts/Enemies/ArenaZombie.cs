@@ -77,6 +77,7 @@ public class ArenaZombie : Enemy
         anim.Play("fallingback");
         transform.gameObject.tag = "Untagged";
         reward.SetActive(true);
+        PlayerPrefs.SetString("StartSpawn", "ArenaExit");
         infoPanel.gameObject.GetComponent<InfoPanel>()
             .setInfoText(@"You have defeated Arena Zombie! Weapon upgrade has been dropped.");
         StartCoroutine(remove());
