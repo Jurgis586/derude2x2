@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyToClone")) {
             changeHealthBy((max_health / 10) * -1);
         }
 
@@ -188,6 +188,18 @@ public class PlayerController : MonoBehaviour
     public void respawn()
     {
         Time.timeScale = 1;
+        switch (PlayerPrefs.GetString("StartSpawn"))
+        {
+            case "City_Entrance":
+                gameObject.transform.position = City_Entrance.transform.position;
+                break;
+            case "Labyrinth":
+                gameObject.transform.position = Labyrinth.transform.position;
+                break;
+            case "ArenaExit":
+                gameObject.transform.position = ArenaExit.transform.position;
+                break;
+        }
         changeHealthBy(max_health);
         changeScore(-1 * score);
         player_mov.player_is_active = true;
@@ -198,18 +210,5 @@ public class PlayerController : MonoBehaviour
         respawnButton.SetActive(false);
         crosshair.SetActive(true);
         Cursor.visible = false;
-
-        switch (PlayerPrefs.GetString("StartSpawn"))
-        {
-            case "City_Entrance":
-                player.transform.position = City_Entrance.transform.position;
-                break;
-            case "Labyrinth":
-                player.transform.position = Labyrinth.transform.position;
-                break;
-            case "ArenaExit":
-                player.transform.position = ArenaExit.transform.position;
-                break;
-        }
     }
 }

@@ -14,7 +14,6 @@ public class WeaponUnlock : MonoBehaviour
             weapon.GetComponent<Gun>().unlocked = true;
             infoPanel.GetComponent<InfoPanel>().setInfoText("You've unlocked a space gun! Now you can enter the Arena");
             other.GetComponentInChildren<AudioSource>().Play();
-            StartCoroutine(cooldown());
             Destroy(gameObject);
         }
     }

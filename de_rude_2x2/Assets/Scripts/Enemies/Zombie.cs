@@ -34,7 +34,7 @@ public class Zombie : Enemy
 
     void Update()
     {
-        if (alive && agent.enabled)
+        if (alive && agent.enabled && attacking)
         {
             if (change_path_time_left < 0)
             {
