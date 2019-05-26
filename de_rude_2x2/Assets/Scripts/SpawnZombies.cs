@@ -7,6 +7,9 @@ public class SpawnZombies : MonoBehaviour
     // Locations
     public GameObject location1;
     public GameObject location2;
+    public GameObject location3;
+    public GameObject location4;
+    public GameObject location5;
 
     public GameObject objectToSpawn;
     public float spawnTime;
@@ -25,6 +28,9 @@ public class SpawnZombies : MonoBehaviour
         {
             Instantiate(objectToSpawn, location1.transform.position, Quaternion.identity);
             Instantiate(objectToSpawn, location2.transform.position, Quaternion.identity);
+            Instantiate(objectToSpawn, location3.transform.position, Quaternion.identity);
+            Instantiate(objectToSpawn, location4.transform.position, Quaternion.identity);
+            Instantiate(objectToSpawn, location5.transform.position, Quaternion.identity);
         }
     }
 }

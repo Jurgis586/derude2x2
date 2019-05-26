@@ -12,8 +12,8 @@ public class ArenaKnightScript : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
             if (Input.GetKey(KeyCode.F))
-                infoPanel.gameObject.GetComponent<InfoPanel>().setInfoText(@"To enter the arena you have to unlock space gun which is located at the desert well.
-                        But be careful, those zombieheads will attack you as soon as they will smell you.");
+                infoPanel.gameObject.GetComponent<InfoPanel>().setInfoText(@"To enter the arena you have to unlock the space gun which is located at the desert well.
+                        But be careful, those zombieheads will try and attack you as soon as they smell you.");
             else
                 infoPanel.gameObject.GetComponent<InfoPanel>().setInfoText(@"Hold F button to speak.");
     }
