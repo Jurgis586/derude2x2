@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Pistol : Gun
 {
     public AudioSource reloadSound;
@@ -28,8 +27,8 @@ public class Pistol : Gun
                     , projectile_spawn_point.rotation);
 
                 bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
-
-                bullet.GetComponent<bullet2>().init(damage, projectile_speed, mask);
+                var dmg = Random.Range((damage / 2), damage); // randomizer
+                bullet.GetComponent<bullet2>().init(dmg, projectile_speed, mask);
 
                 current_clip--;
 

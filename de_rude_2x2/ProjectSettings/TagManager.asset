@@ -12,6 +12,7 @@ TagManager:
   - Player_gun
   - Knight
   - EnemyToClone
+  - Bar
   layers:
   - Default
   - TransparentFX
